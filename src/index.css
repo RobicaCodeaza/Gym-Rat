@@ -93,3 +93,9 @@ img {
 
     /* filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity)); */
 }
+
+@layer base {
+  :root {
+        --radius: 0.5rem;
+    }
+}
