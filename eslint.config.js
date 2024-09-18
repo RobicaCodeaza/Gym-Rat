@@ -57,6 +57,7 @@ export default tseslint.config(
             ...react.configs['jsx-runtime'].rules,
             'react/react-in-jsx-scope': 'off',
             'react/jsx-no-target-blank': 'off',
+            'react/prop-types': 'off',
             //-----------------------------------------
 
             //-----------------------------------------

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as LabelPrimitive from '@radix-ui/react-label'
 import { Slot } from '@radix-ui/react-slot'
+import type { HTMLAttributes } from 'react'
 import {
     Controller,
     ControllerProps,
@@ -72,7 +73,7 @@ const FormItemContext = React.createContext<FormItemContextValue>(
 
 const FormItem = React.forwardRef<
     HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement>
+    HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
     const id = React.useId()
 
@@ -126,7 +127,7 @@ FormControl.displayName = 'FormControl'
 
 const FormDescription = React.forwardRef<
     HTMLParagraphElement,
-    React.HTMLAttributes<HTMLParagraphElement>
+    HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => {
     const { formDescriptionId } = useFormField()
 
@@ -146,7 +147,7 @@ FormDescription.displayName = 'FormDescription'
 
 const FormMessage = React.forwardRef<
     HTMLParagraphElement,
-    React.HTMLAttributes<HTMLParagraphElement>
+    HTMLAttributes<HTMLParagraphElement>
 >(
     (
         {
