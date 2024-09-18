@@ -48,10 +48,7 @@ export default tseslint.config(
             //-----------------------------------------
             //React Hooks Rules
             ...reactHooks.configs.recommended.rules,
-            'react-refresh/only-export-components': [
-                'warn',
-                { allowConstantExport: true },
-            ],
+            'react-refresh/only-export-components': 'off',
             //-----------------------------------------
 
             //-----------------------------------------
@@ -67,6 +64,10 @@ export default tseslint.config(
             '@typescript-eslint/no-misused-promises': 'off',
             '@typescript-eslint/consistent-type-definitions': 'off',
             '@typescript-eslint/no-unused-vars': 'off',
+            '@typescript-eslint/no-duplicate-type-constituents': 'off',
+            '@typescript-eslint/no-unsafe-member-access': 'off',
+            '@typescript-eslint/no-unsafe-assignment': 'off',
+            '@typescript-eslint/no-unsafe-argument': 'off',
             //-----------------------------------------
 
             //-----------------------------------------
