@@ -5,6 +5,8 @@ import Spinner from './Spinner'
 // import { useNavigate } from 'react-router-dom'
 // import { useLocalStorageState } from '@/hooks/useLocalStorageState'
 
+import Form from './Form'
+
 type ProtectedRouteProps = PropsWithChildren
 
 export type UserType = {
@@ -32,13 +34,14 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
     //     [isAuthenticated, isLoading, navigate, setUserId, user]
     // )
 
-    // if (isLoading)
-    return (
-        <FullPage>
-            <Spinner></Spinner>
-        </FullPage>
-    )
+    return <Form></Form>
 
+    // if (isLoading)
+    // return (
+    //     <FullPage>
+    //         <Spinner></Spinner>
+    //     </FullPage>
+    // )
     // if (isAuthenticated) return <>{children}</>
 }
 

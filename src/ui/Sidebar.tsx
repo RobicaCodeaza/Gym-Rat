@@ -4,6 +4,7 @@ import MainNav from './MainNav'
 
 function Sidebar() {
     // const { openMenu } = useMobileNav()
+    const openMenu = true
 
     return (
         <div
