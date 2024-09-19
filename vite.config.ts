@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
-import eslint from 'vite-plugin-eslint'
+import eslint from '@nabla/vite-plugin-eslint'
 const typedEslintPlugin = eslint as () => import('vite').Plugin
 import path from 'path'
 

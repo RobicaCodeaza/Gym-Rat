@@ -14,6 +14,7 @@ import Exercises from './pages/Exercises'
 import { Toaster } from 'react-hot-toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import Dashboard from './pages/Dashboard'
 
 const queryClient = new QueryClient({
     defaultOptions: { queries: { retry: false, staleTime: 0 } },
@@ -38,6 +39,10 @@ function App() {
                                 element={
                                     <Navigate to="dashboard" replace></Navigate>
                                 }
+                            ></Route>
+                            <Route
+                                path="dashboard"
+                                element={<Dashboard></Dashboard>}
                             ></Route>
                             <Route
                                 path="tracking"
