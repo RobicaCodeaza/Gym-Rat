@@ -1,6 +1,6 @@
 import supabase from './supabase'
 
-export async function getCurrentSession() {
+export async function getCurrentUser() {
     const { data: session } = await supabase.auth.getSession()
 
     if (!session.session) return
