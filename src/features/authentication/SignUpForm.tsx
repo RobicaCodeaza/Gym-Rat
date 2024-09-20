@@ -2,16 +2,43 @@ import React, { Dispatch } from 'react'
 import { Label } from '@/components/aceternity/Label'
 import { Input } from '@/components/aceternity/Input'
 import { cn } from '@/lib/utils'
-import { IconBrandGoogle } from '@tabler/icons-react'
+import { FieldErrors, SubmitHandler, useForm } from 'react-hook-form'
+import { useSignup } from './useSignup'
 
 type SignUpProps = {
     toggleForm: Dispatch<React.SetStateAction<boolean>>
 }
 
+type SignUpInputs = {
+    firstname: string
+    lastname: string
+    email: string
+    password: string
+}
+
 export function SignUpForm({ toggleForm }: SignUpProps) {
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        console.log('Form submitted')
+    const { handleSubmit, register, reset, formState } = useForm<SignUpInputs>()
+    const { errors } = formState
+    const { signup, isSigningUp } = useSignup()
+
+    const onSubmit: SubmitHandler<SignUpInputs> = (data) => {
+        signup(
+            {
+                firstname: data.firstname,
+                lastname: data.lastname,
+                email: data.email,
+                password: data.password,
+            },
+            {
+                onSuccess: () => {
+                    reset()
+                    toggleForm(true)
+                },
+            }
+        )
+    }
+    const onError: SubmitHandler<FieldErrors> = (error) => {
+        console.log('error', error)
     }
     return (
         <div className="mx-auto h-auto rounded-none bg-cod-gray-900/10 p-12 shadow-input backdrop-blur-sm phone:rounded-2xl phone:border-[0.5px] phone:border-cod-gray-600 phone:p-12 tab-port:p-16 tab-land:p-20">
@@ -23,34 +50,84 @@ export function SignUpForm({ toggleForm }: SignUpProps) {
                 Create a GymRat account to maximise your gains.
             </p>
 
-            <form className="flex flex-col" onSubmit={handleSubmit}>
+            <form
+                className="flex flex-col"
+                onSubmit={handleSubmit(onSubmit, onError)}
+            >
                 <div className="mb-8 flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0 phone:mb-10">
-                    <LabelInputContainer>
-                        <Label htmlFor="firstname">First name</Label>
-                        <Input id="firstname" placeholder="Tyler" type="text" />
-                    </LabelInputContainer>
-                    <LabelInputContainer>
-                        <Label htmlFor="lastname">Last name</Label>
-                        <Input id="lastname" placeholder="Durden" type="text" />
-                    </LabelInputContainer>
+                    <div className="flex w-full flex-col gap-1">
+                        <LabelInputContainer>
+                            <Label htmlFor="firstname">First name</Label>
+                            <Input
+                                {...register('firstname', {
+                                    required: 'Missing First Name.',
+                                })}
+                                id="firstname"
+                                placeholder="Tyler"
+                                type="text"
+                            />
+                        </LabelInputContainer>
+                        {errors?.firstname?.message && (
+                            <p className="text-sm text-red-500">
+                                {errors?.firstname?.message}
+                            </p>
+                        )}
+                    </div>
+                    <div className="flex w-full flex-col">
+                        <LabelInputContainer>
+                            <Label htmlFor="lastname">Last name</Label>
+                            <Input
+                                {...register('lastname', {
+                                    required: 'Missing Last Name.',
+                                })}
+                                id="lastname"
+                                placeholder="Durden"
+                                type="text"
+                            />
+                        </LabelInputContainer>
+                        {errors?.lastname?.message && (
+                            <p className="text-sm text-red-500">
+                                {errors?.lastname?.message}
+                            </p>
+                        )}
+                    </div>
                 </div>
-                <LabelInputContainer className="mb-8 phone:mb-10">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input
-                        id="email"
-                        placeholder="projectmayhem@fc.com"
-                        type="email"
-                    />
-                </LabelInputContainer>
-                <LabelInputContainer className="mb-8 phone:mb-10">
-                    <Label htmlFor="password">Password</Label>
-                    <Input
-                        id="password"
-                        placeholder="••••••••"
-                        type="password"
-                    />
-                </LabelInputContainer>
-
+                <div className="mb-8 flex flex-col gap-1 phone:mb-10">
+                    <LabelInputContainer className="">
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input
+                            {...register('email', {
+                                required: 'Provide Correct Email.',
+                            })}
+                            id="email"
+                            placeholder="projectmayhem@fc.com"
+                            type="email"
+                        />
+                    </LabelInputContainer>
+                    {errors?.email?.message && (
+                        <p className="text-sm text-red-500">
+                            {errors?.email?.message}
+                        </p>
+                    )}
+                </div>
+                <div className="mb-8 flex flex-col gap-1 phone:mb-10">
+                    <LabelInputContainer className="">
+                        <Label htmlFor="password">Password</Label>
+                        <Input
+                            {...register('password', {
+                                required: 'Provide Correct Password.',
+                            })}
+                            id="password"
+                            placeholder="••••••••"
+                            type="password"
+                        />
+                    </LabelInputContainer>
+                    {errors?.password?.message && (
+                        <p className="text-sm text-red-500">
+                            {errors?.password?.message}
+                        </p>
+                    )}
+                </div>
                 <button
                     className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-starship-500 dark:from-dodger-blue-700 dark:to-dodger-blue-600 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
                     type="submit"
