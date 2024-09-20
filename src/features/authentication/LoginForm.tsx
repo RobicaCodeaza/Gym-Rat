@@ -19,6 +19,7 @@ export function LoginForm({ toggleForm }: LoginProps) {
     const { register, handleSubmit, formState, reset } = useForm<LoginInputs>()
     const { errors } = formState
     const { login, isLoggingIn } = useLogin()
+    console.log(isLoggingIn)
     const onSubmit: SubmitHandler<LoginInputs> = (data) => {
         console.log(data)
         login(
@@ -39,7 +40,7 @@ export function LoginForm({ toggleForm }: LoginProps) {
     }
     return (
         <div className="mx-auto h-auto rounded-none bg-cod-gray-900/10 p-12 shadow-input backdrop-blur-sm phone:min-w-[35rem] phone:rounded-2xl phone:border-[0.5px] phone:border-cod-gray-600 phone:p-12 tab-port:min-w-[40rem] tab-port:p-16 tab-land:p-20">
-            <h2 className="flex items-center justify-center gap-4 text-center text-2xl font-bold leading-[1.8] text-cod-gray-800 dark:text-cod-gray-100 tab-port:gap-6">
+            <h2 className="flex items-center justify-center gap-4 text-center text-2xl font-bold leading-[1.8] text-cod-gray-800 tab-port:gap-6 dark:text-cod-gray-100">
                 <span className="text-sm text-starship-600">❚█══█❚</span>GymRat
                 <span className="text-sm text-starship-600">❚█══█❚</span>
             </h2>
@@ -110,7 +111,8 @@ export function LoginForm({ toggleForm }: LoginProps) {
                     </button>
                 </div>
                 <button
-                    className="mx-auto block cursor-pointer text-center text-sm text-cod-gray-700 underline transition-all duration-100 hover:text-cod-gray-800 dark:text-cod-gray-300 hover:dark:text-cod-gray-200"
+                    className="mx-auto block cursor-pointer text-center text-sm text-cod-gray-700 underline transition-all duration-100 hover:text-cod-gray-800 disabled:cursor-not-allowed disabled:opacity-50 dark:text-cod-gray-300 hover:dark:text-cod-gray-200"
+                    disabled={isLoggingIn}
                     onClick={() => {
                         toggleForm(false)
                         reset()

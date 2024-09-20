@@ -6,7 +6,7 @@ import { MovingGradient } from '../ui/MovingGradient'
 import { useNavigate } from 'react-router-dom'
 
 function Authentication() {
-    const { isLoading, isAuthenticated, user } = useUser()
+    const { isLoading, isAuthenticated } = useUser()
     const navigate = useNavigate()
 
     useEffect(
