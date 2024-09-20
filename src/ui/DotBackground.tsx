@@ -11,7 +11,7 @@ import { PropsWithChildren } from 'react'
  */
 export function DotBackgroundDemo({ children }: PropsWithChildren) {
     return (
-        <div className="bg-dot-white/[0.3] relative z-10 flex h-screen w-1/2 items-center justify-center bg-cod-gray-darker/80 backdrop-blur-sm">
+        <div className="relative z-10 flex h-screen w-full items-center justify-center bg-cod-gray-950/70 backdrop-blur-sm bg-dot-white/[0.3] phone:w-1/2">
             {/* Radial gradient for the container to give a faded look */}
             <div className="bg-black[mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] pointer-events-none absolute inset-0 flex items-center justify-center"></div>
             {children}

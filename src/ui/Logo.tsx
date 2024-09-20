@@ -1,15 +1,17 @@
 import logo from '../../public/logo.png'
 
 type LogoTypePhone = {
-    height: 'small' | 'medium' | 'big'
+    height: 'small' | 'medium' | 'big' | 'bigger' | 'biggest'
 }
 
 function Logo({ height }: LogoTypePhone) {
     return (
-        <div
-            className={`flex ${height === 'medium' && 'h-16'} ${height === 'big' && 'h-24'} ${height === 'small' && 'h-14'} particular-small-laptop:h-16 justify-center`}
-        >
-            <img className="object-contain" alt="Logo" src={logo}></img>
+        <div>
+            <img
+                className={` ${height === 'medium' && 'h-16'} ${height === 'big' && 'h-24'} ${height === 'small' && 'h-14'} ${height === 'bigger' && 'h-44'} ${height === 'biggest' && 'h-56'}`}
+                alt="Logo"
+                src={logo}
+            ></img>
         </div>
     )
 }

@@ -1,4 +1,5 @@
-import LoginContainer from '../features/authentication/LoginContainer'
+import GeneralOverview from '../features/authentication/GeneralOverview'
+import AuthenticationContainer from '../features/authentication/LoginContainer'
 import { MovingGradient } from '../ui/MovingGradient'
 
 function Authentication() {
@@ -6,8 +7,8 @@ function Authentication() {
         <div className="flex h-screen bg-cod-gray-950">
             <MovingGradient>
                 <div className="z-10 flex">
-                    <LoginContainer></LoginContainer>
-                    <div className="z-10 w-1/2 bg-cod-gray-950/80 backdrop-blur-sm"></div>
+                    <AuthenticationContainer></AuthenticationContainer>
+                    <GeneralOverview></GeneralOverview>
                 </div>
             </MovingGradient>
         </div>

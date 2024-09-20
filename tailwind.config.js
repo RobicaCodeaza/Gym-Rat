@@ -7,7 +7,7 @@ const {
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: ['class'],
+    darkMode: ['selector'],
     content: [
         './pages/**/*.{ts,tsx}',
         './components/**/*.{ts,tsx}',
@@ -16,6 +16,23 @@ export default {
     ],
     theme: {
         extend: {
+            fontSize: {
+                xs: '10px', // Overline
+                sm: '12px', // Caption
+                base: '14px', // Body 2 / Subtitle 2
+                lg: '16px', // Body 1 / Subtitle 1
+                xl: '20px', // H6
+                '2xl': '24px', // H5
+                '3xl': '34px', // H4
+                '4xl': '48px', // H3
+                '5xl': '60px', // H2
+                '6xl': '96px', // H1
+            },
+            fontWeight: {
+                light: 300,
+                regular: 400,
+                medium: 500,
+            },
             keyframes: {
                 moveHorizontal: {
                     '0%': {

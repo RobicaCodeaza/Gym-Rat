@@ -4,30 +4,27 @@ import { Input } from '@/components/aceternity/Input'
 import { cn } from '@/lib/utils'
 import { IconBrandGoogle } from '@tabler/icons-react'
 
-type LoginProps = {
+type SignUpProps = {
     toggleForm: Dispatch<React.SetStateAction<boolean>>
 }
 
-export function LoginForm({ toggleForm }: LoginProps) {
+export function SignUpForm({ toggleForm }: SignUpProps) {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log('Form submitted')
     }
     return (
-        <div className="mx-auto h-auto rounded-none bg-cod-gray-900/10 p-12 shadow-input backdrop-blur-sm phone:min-w-[35rem] phone:rounded-2xl phone:border-[0.5px] phone:border-cod-gray-600 phone:p-12 tab-port:min-w-[40rem] tab-port:p-16 tab-land:p-20">
+        <div className="mx-auto h-auto rounded-none bg-cod-gray-900/10 p-12 shadow-input backdrop-blur-sm phone:rounded-2xl phone:border-[0.5px] phone:border-cod-gray-600 phone:p-12 tab-port:p-16 tab-land:p-20">
             <h2 className="flex items-center justify-center gap-4 text-center text-2xl font-bold leading-[1.8] text-cod-gray-800 dark:text-cod-gray-100 tab-port:gap-6">
                 <span className="text-sm text-starship-600">❚█══█❚</span>GymRat
                 <span className="text-sm text-starship-600">❚█══█❚</span>
             </h2>
             <p className="mb-8 mt-2 text-center text-sm text-cod-gray-600 dark:text-cod-gray-300">
-                Welcome back to your GymRat.
+                Create a GymRat account to maximise your gains.
             </p>
 
-            <form
-                className="flex-flex-col items-center"
-                onSubmit={handleSubmit}
-            >
-                {/* <div className="mb-8 flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0 phone:mb-10">
+            <form className="flex flex-col" onSubmit={handleSubmit}>
+                <div className="mb-8 flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0 phone:mb-10">
                     <LabelInputContainer>
                         <Label htmlFor="firstname">First name</Label>
                         <Input id="firstname" placeholder="Tyler" type="text" />
@@ -36,7 +33,7 @@ export function LoginForm({ toggleForm }: LoginProps) {
                         <Label htmlFor="lastname">Last name</Label>
                         <Input id="lastname" placeholder="Durden" type="text" />
                     </LabelInputContainer>
-                </div> */}
+                </div>
                 <LabelInputContainer className="mb-8 phone:mb-10">
                     <Label htmlFor="email">Email Address</Label>
                     <Input
@@ -55,10 +52,10 @@ export function LoginForm({ toggleForm }: LoginProps) {
                 </LabelInputContainer>
 
                 <button
-                    className="group/btn relative block h-10 w-full rounded-lg bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-starship-500 dark:from-starship-700 dark:to-starship-600 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+                    className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-starship-500 dark:from-dodger-blue-700 dark:to-dodger-blue-600 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
                     type="submit"
                 >
-                    Login &rarr;
+                    Sign up &rarr;
                     <BottomGradient />
                 </button>
 
@@ -78,9 +75,9 @@ export function LoginForm({ toggleForm }: LoginProps) {
                 </div> */}
                 <button
                     className="mx-auto block cursor-pointer text-center text-sm text-cod-gray-700 underline transition-all duration-100 hover:text-cod-gray-800 dark:text-cod-gray-300 hover:dark:text-cod-gray-200"
-                    onClick={() => toggleForm(false)}
+                    onClick={() => toggleForm(true)}
                 >
-                    Don&apos;t have an account? Sign up.
+                    Already have an account? Sign in.
                 </button>
             </form>
         </div>
