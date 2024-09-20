@@ -3,15 +3,39 @@ import { Label } from '@/components/aceternity/Label'
 import { Input } from '@/components/aceternity/Input'
 import { cn } from '@/lib/utils'
 import { IconBrandGoogle } from '@tabler/icons-react'
+import { useLogin } from './useLogin'
+import { type FieldErrors, type SubmitHandler, useForm } from 'react-hook-form'
 
 type LoginProps = {
     toggleForm: Dispatch<React.SetStateAction<boolean>>
 }
 
+type LoginInputs = {
+    email: string
+    password: string
+}
+
 export function LoginForm({ toggleForm }: LoginProps) {
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        console.log('Form submitted')
+    const { register, handleSubmit, formState, reset } = useForm<LoginInputs>()
+    const { errors } = formState
+    const { login, isLoggingIn } = useLogin()
+    const onSubmit: SubmitHandler<LoginInputs> = (data) => {
+        console.log(data)
+        login(
+            {
+                email: data.email,
+                password: data.password,
+            },
+            {
+                onSuccess: () => {
+                    reset()
+                    // toggleForm(true)
+                },
+            }
+        )
+    }
+    const onError: SubmitHandler<FieldErrors> = (error) => {
+        console.log('error', error)
     }
     return (
         <div className="mx-auto h-auto rounded-none bg-cod-gray-900/10 p-12 shadow-input backdrop-blur-sm phone:min-w-[35rem] phone:rounded-2xl phone:border-[0.5px] phone:border-cod-gray-600 phone:p-12 tab-port:min-w-[40rem] tab-port:p-16 tab-land:p-20">
@@ -25,35 +49,44 @@ export function LoginForm({ toggleForm }: LoginProps) {
 
             <form
                 className="flex-flex-col items-center"
-                onSubmit={handleSubmit}
+                onSubmit={handleSubmit(onSubmit, onError)}
             >
-                {/* <div className="mb-8 flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0 phone:mb-10">
-                    <LabelInputContainer>
-                        <Label htmlFor="firstname">First name</Label>
-                        <Input id="firstname" placeholder="Tyler" type="text" />
+                <div className="flex w-full flex-col gap-1">
+                    <LabelInputContainer className="mb-8 phone:mb-10">
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input
+                            id="email"
+                            placeholder="projectmayhem@fc.com"
+                            type="email"
+                            {...register('email', {
+                                required: 'Missing email',
+                            })}
+                        />
+                        {errors?.email?.message && (
+                            <p className="text-sm text-red-500">
+                                {errors?.email?.message}
+                            </p>
+                        )}
                     </LabelInputContainer>
-                    <LabelInputContainer>
-                        <Label htmlFor="lastname">Last name</Label>
-                        <Input id="lastname" placeholder="Durden" type="text" />
+                </div>
+                <div className="flex w-full flex-col gap-1">
+                    <LabelInputContainer className="mb-8 phone:mb-10">
+                        <Label htmlFor="password">Password</Label>
+                        <Input
+                            id="password"
+                            placeholder="••••••••"
+                            type="password"
+                            {...register('password', {
+                                required: 'Missing password',
+                            })}
+                        />
+                        {errors?.password?.message && (
+                            <p className="text-sm text-red-500">
+                                {errors?.password?.message}
+                            </p>
+                        )}
                     </LabelInputContainer>
-                </div> */}
-                <LabelInputContainer className="mb-8 phone:mb-10">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input
-                        id="email"
-                        placeholder="projectmayhem@fc.com"
-                        type="email"
-                    />
-                </LabelInputContainer>
-                <LabelInputContainer className="mb-8 phone:mb-10">
-                    <Label htmlFor="password">Password</Label>
-                    <Input
-                        id="password"
-                        placeholder="••••••••"
-                        type="password"
-                    />
-                </LabelInputContainer>
-
+                </div>
                 <button
                     className="group/btn relative block h-10 w-full rounded-lg bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-starship-500 dark:from-starship-700 dark:to-starship-600 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
                     type="submit"
@@ -64,9 +97,9 @@ export function LoginForm({ toggleForm }: LoginProps) {
 
                 <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
 
-                {/* <div className="flex flex-col space-y-4">
+                <div className="mb-8 flex w-full flex-col">
                     <button
-                        className="group/btn relative flex h-10 w-1/2 items-center justify-start space-x-2 rounded-lg bg-cod-gray-darkest px-4 font-medium text-white shadow-input dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+                        className="group/btn relative flex h-10 items-center justify-start space-x-2 rounded-lg bg-cod-gray-darkest px-4 font-medium text-white shadow-input dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
                         type="submit"
                     >
                         <IconBrandGoogle className="h-4 w-4 text-cod-gray-800 dark:text-cod-gray-300" />
@@ -75,7 +108,7 @@ export function LoginForm({ toggleForm }: LoginProps) {
                         </span>
                         <BottomGradient />
                     </button>
-                </div> */}
+                </div>
                 <button
                     className="mx-auto block cursor-pointer text-center text-sm text-cod-gray-700 underline transition-all duration-100 hover:text-cod-gray-800 dark:text-cod-gray-300 hover:dark:text-cod-gray-200"
                     onClick={() => toggleForm(false)}

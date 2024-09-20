@@ -10,7 +10,7 @@ export async function getCurrentUser() {
 
     if (errorGettingUser) throw new Error(errorGettingUser.message)
 
-    return userData.user
+    return userData?.user
 }
 
 export async function login(email: string, password: string) {
@@ -22,13 +22,24 @@ export async function login(email: string, password: string) {
     if (error) {
         throw new Error(error.message)
     }
-    return data
+    return data.user
 }
 
-export async function signup(email: string, password: string) {
+export async function signup(
+    firstname: string,
+    lastname: string,
+    email: string,
+    password: string
+) {
     const { data, error } = await supabase.auth.signUp({
         email: email,
         password: password,
+        options: {
+            data: {
+                firstname: firstname,
+                lastname: lastname,
+            },
+        },
     })
     if (error) {
         throw new Error(error.message)
