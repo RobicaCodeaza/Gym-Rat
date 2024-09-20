@@ -152,7 +152,10 @@ export function SignUpForm({ toggleForm }: SignUpProps) {
                 </div> */}
                 <button
                     className="mx-auto block cursor-pointer text-center text-sm text-cod-gray-700 underline transition-all duration-100 hover:text-cod-gray-800 dark:text-cod-gray-300 hover:dark:text-cod-gray-200"
-                    onClick={() => toggleForm(true)}
+                    onClick={() => {
+                        toggleForm(true)
+                        reset()
+                    }}
                 >
                     Already have an account? Sign in.
                 </button>

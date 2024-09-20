@@ -5,7 +5,6 @@ import { LoginForm } from './LoginForm'
 
 function AuthenticationContainer() {
     const [hasAccount, setHasAccount] = useState<boolean>(true)
-    console.log(hasAccount)
     return (
         <DotBackgroundDemo>
             {hasAccount ? (
