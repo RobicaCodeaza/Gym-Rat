@@ -1,4 +1,4 @@
-// import { useUser } from '@/features/authentication/useUser'
+import { useUser } from '@/features/authentication/useUser'
 import { PropsWithChildren, useEffect } from 'react'
 import FullPage from './FullPage'
 import Spinner from './Spinner'
@@ -14,20 +14,13 @@ type ProtectedRouteProps = PropsWithChildren
 
 function ProtectedRoute({ children }: ProtectedRouteProps) {
     const navigate = useNavigate()
-    // const [_, setUserId] = useLocalStorageState<UserType>(
-    //     { user_id: '', user_provider: '' },
-    //     'user'
-    // )
+
     const { isLoading, isAuthenticated, user } = useUser()
     useEffect(
         function () {
             if (!isAuthenticated && !isLoading)
                 navigate('/auth', { replace: true })
-            if (isAuthenticated && !isLoading)
-                setUserId({
-                    user_id: user!.id,
-                    user_provider: user!.app_metadata.provider,
-                })
+            if (isAuthenticated && !isLoading) return
         },
         [isAuthenticated, isLoading, navigate, user]
     )
