@@ -4,6 +4,10 @@ import Main from './Main'
 import Sidebar from './Sidebar'
 import Container from './Container'
 
+import { DotBackgroundDemo } from './DotBackground'
+
+import FloatingNav from './FloatingNav'
+
 /**
  * A component that renders the main application layout.
  *
@@ -15,14 +19,13 @@ import Container from './Container'
  */
 function AppLayout() {
     return (
-        <div className="tab-port:grid-cols-[20rem_1fr] tab-land:grid-cols-[20rem_1fr] grid h-screen grid-cols-[1fr] grid-rows-[auto_1fr]">
-            <Sidebar></Sidebar>
-            <Header></Header>
-            <Main>
-                <Container>
-                    <Outlet></Outlet>
-                </Container>
-            </Main>
+        <div className="h-screen w-screen bg-cod-gray-950">
+            <DotBackgroundDemo type="full">
+                <div className="flex h-full w-full flex-col">
+                    <Header></Header>
+                    <FloatingNav></FloatingNav>
+                </div>
+            </DotBackgroundDemo>
         </div>
     )
 }
