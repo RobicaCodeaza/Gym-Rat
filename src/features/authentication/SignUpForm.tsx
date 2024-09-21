@@ -42,7 +42,7 @@ export function SignUpForm({ toggleForm }: SignUpProps) {
     }
     return (
         <div className="mx-auto h-auto rounded-none bg-cod-gray-900/10 p-12 shadow-input backdrop-blur-sm phone:rounded-2xl phone:border-[0.5px] phone:border-cod-gray-600 phone:p-12 tab-port:p-16 tab-land:p-20">
-            <h2 className="flex items-center justify-center gap-4 text-center text-2xl font-bold leading-[1.8] text-cod-gray-800 dark:text-cod-gray-100 tab-port:gap-6">
+            <h2 className="flex items-center justify-center gap-4 text-center text-2xl font-bold leading-[1.8] text-cod-gray-800 tab-port:gap-6 dark:text-cod-gray-100">
                 <span className="text-sm text-starship-600">❚█══█❚</span>GymRat
                 <span className="text-sm text-starship-600">❚█══█❚</span>
             </h2>
@@ -65,6 +65,7 @@ export function SignUpForm({ toggleForm }: SignUpProps) {
                                 id="firstname"
                                 placeholder="Tyler"
                                 type="text"
+                                disabled={isSigningUp}
                             />
                         </LabelInputContainer>
                         {errors?.firstname?.message && (
@@ -83,6 +84,7 @@ export function SignUpForm({ toggleForm }: SignUpProps) {
                                 id="lastname"
                                 placeholder="Durden"
                                 type="text"
+                                disabled={isSigningUp}
                             />
                         </LabelInputContainer>
                         {errors?.lastname?.message && (
@@ -102,6 +104,7 @@ export function SignUpForm({ toggleForm }: SignUpProps) {
                             id="email"
                             placeholder="projectmayhem@fc.com"
                             type="email"
+                            disabled={isSigningUp}
                         />
                     </LabelInputContainer>
                     {errors?.email?.message && (
@@ -120,6 +123,7 @@ export function SignUpForm({ toggleForm }: SignUpProps) {
                             id="password"
                             placeholder="••••••••"
                             type="password"
+                            disabled={isSigningUp}
                         />
                     </LabelInputContainer>
                     {errors?.password?.message && (
@@ -129,8 +133,9 @@ export function SignUpForm({ toggleForm }: SignUpProps) {
                     )}
                 </div>
                 <button
-                    className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-starship-500 dark:from-dodger-blue-700 dark:to-dodger-blue-600 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+                    className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] disabled:cursor-not-allowed disabled:opacity-50 dark:bg-starship-500 dark:from-dodger-blue-700 dark:to-dodger-blue-600 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
                     type="submit"
+                    disabled={isSigningUp}
                 >
                     Sign up &rarr;
                     <BottomGradient />

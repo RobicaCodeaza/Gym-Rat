@@ -15,6 +15,7 @@ import { Toaster } from 'react-hot-toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import Dashboard from './pages/Dashboard'
+import Settings from './pages/Settings'
 
 const queryClient = new QueryClient({
     defaultOptions: { queries: { retry: false, staleTime: 0 } },
@@ -74,6 +75,10 @@ function App() {
                             <Route
                                 path="calendar"
                                 element={<Calendar></Calendar>}
+                            ></Route>
+                            <Route
+                                path="settings"
+                                element={<Settings></Settings>}
                             ></Route>
                         </Route>
 
