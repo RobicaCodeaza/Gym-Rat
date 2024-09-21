@@ -13,7 +13,7 @@ function FloatingNav() {
         {
             title: 'Dashboard',
             icon: (
-                <ButtonIcon>
+                <ButtonIcon otherClasses="w-8 h-8 phone:w-10 phone:h-10 tab-port:w-12 tab-port:h-12">
                     <RiDashboardHorizontalLine></RiDashboardHorizontalLine>
                 </ButtonIcon>
             ),
@@ -22,7 +22,7 @@ function FloatingNav() {
         {
             title: 'Workout',
             icon: (
-                <ButtonIcon>
+                <ButtonIcon otherClasses="w-8 h-8 phone:w-10 phone:h-10 tab-port:w-12 tab-port:h-12">
                     <GiGymBag></GiGymBag>
                 </ButtonIcon>
             ),
@@ -31,7 +31,7 @@ function FloatingNav() {
         {
             title: 'Tracking',
             icon: (
-                <ButtonIcon>
+                <ButtonIcon otherClasses="w-8 h-8 phone:w-10 phone:h-10 tab-port:w-12 tab-port:h-12">
                     <GiProgression></GiProgression>
                 </ButtonIcon>
             ),
@@ -40,7 +40,7 @@ function FloatingNav() {
         {
             title: 'Calendar',
             icon: (
-                <ButtonIcon>
+                <ButtonIcon otherClasses="w-8 h-8 phone:w-10 phone:h-10 tab-port:w-12 tab-port:h-12">
                     <RiCalendarLine></RiCalendarLine>
                 </ButtonIcon>
             ),

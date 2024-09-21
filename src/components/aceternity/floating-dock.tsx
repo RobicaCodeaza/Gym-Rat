@@ -16,6 +16,7 @@ import {
 } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
 import { useRef, useState } from 'react'
+import useMediaQueryResize, { phone } from '../../hooks/useMediaQuery'
 
 export const FloatingDock = ({
     items,
@@ -126,6 +127,11 @@ function IconContainer({
     icon: React.ReactNode
     href: string
 }) {
+    const mediaPhone = useMediaQueryResize({
+        query: phone,
+        basicQuery: 'max-width',
+    })
+
     let ref = useRef<HTMLDivElement>(null)
 
     let distance = useTransform(mouseX, (val) => {
@@ -134,9 +140,10 @@ function IconContainer({
         return val - bounds.x - bounds.width / 2
     })
 
-    let widthTransform = useTransform(distance, [-50, 0, 50], [40, 80, 40])
-    let heightTransform = useTransform(distance, [-50, 0, 50], [40, 80, 40])
-    console.log(widthTransform)
+    const sizeResponsive = mediaPhone ? [30, 40, 30] : [40, 80, 40]
+
+    let widthTransform = useTransform(distance, [-50, 0, 50], sizeResponsive)
+    let heightTransform = useTransform(distance, [-50, 0, 50], sizeResponsive)
 
     let widthTransformIcon = useTransform(
         distance,
