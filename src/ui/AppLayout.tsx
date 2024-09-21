@@ -23,6 +23,11 @@ function AppLayout() {
             <DotBackgroundDemo type="full">
                 <div className="flex h-full w-full flex-col">
                     <Header></Header>
+                    <Main>
+                        <Container>
+                            <Outlet></Outlet>
+                        </Container>
+                    </Main>
                     <FloatingNav></FloatingNav>
                 </div>
             </DotBackgroundDemo>
