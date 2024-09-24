@@ -3,7 +3,7 @@ import { Tabs } from '../components/aceternity/tabs'
 export function TabsDemo() {
     const tabs = [
         {
-            title: 'Product',
+            title: 'General',
             value: 'product',
             content: (
                 <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-700 to-lima-900 p-10 text-xl font-bold text-white md:text-4xl">
@@ -13,7 +13,7 @@ export function TabsDemo() {
             ),
         },
         {
-            title: 'Services',
+            title: 'Workout',
             value: 'services',
             content: (
                 <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-purple-700 to-violet-900 p-10 text-xl font-bold text-white md:text-4xl">
@@ -23,7 +23,7 @@ export function TabsDemo() {
             ),
         },
         {
-            title: 'Playground',
+            title: 'Exercises',
             value: 'playground',
             content: (
                 <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-purple-700 to-violet-900 p-10 text-xl font-bold text-white md:text-4xl">
@@ -33,7 +33,7 @@ export function TabsDemo() {
             ),
         },
         {
-            title: 'Content',
+            title: 'Equipment',
             value: 'content',
             content: (
                 <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-purple-700 to-violet-900 p-10 text-xl font-bold text-white md:text-4xl">
