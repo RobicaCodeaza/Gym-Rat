@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
@@ -16,12 +16,14 @@ export const Tabs = ({
     activeTabClassName,
     tabClassName,
     contentClassName,
+    children,
 }: {
     tabs: Tab[]
     containerClassName?: string
     activeTabClassName?: string
     tabClassName?: string
     contentClassName?: string
+    children: ReactNode
 }) => {
     const [active, setActive] = useState<Tab>(propTabs[0])
     const [tabs, setTabs] = useState<Tab[]>(propTabs)
@@ -40,7 +42,7 @@ export const Tabs = ({
         <>
             <div
                 className={cn(
-                    'no-visible-scrollbar relative flex w-full flex-row items-center justify-center overflow-auto [perspective:1000px] sm:overflow-visible',
+                    'no-visible-scrollbar justify-between[perspective:1000px] relative flex flex-row items-center overflow-auto sm:overflow-visible',
                     containerClassName
                 )}
             >
@@ -69,19 +71,20 @@ export const Tabs = ({
                                     duration: 0.6,
                                 }}
                                 className={cn(
-                                    'absolute inset-0 rounded-full dark:bg-cod-gray-50',
+                                    'absolute inset-0 rounded-full dark:bg-dodger-blue-700',
                                     activeTabClassName
                                 )}
                             />
                         )}
 
                         <span
-                            className={`relative block text-black dark:${active.value === tab.value ? 'cod-gray-900' : 'cod-gray-900'} `}
+                            className={`relative block ${active.value === tab.value ? 'dark:text-cod-gray-100' : 'dark:text-cod-gray-300'} `}
                         >
                             {tab.title}
                         </span>
                     </button>
                 ))}
+                {children}
             </div>
             <FadeInDiv
                 tabs={tabs}
