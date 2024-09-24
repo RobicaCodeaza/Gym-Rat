@@ -7,6 +7,10 @@ import Container from './Container'
 import { DotBackgroundDemo } from './DotBackground'
 
 import FloatingNav from './FloatingNav'
+import { MovingGradient } from './MovingGradient'
+import { HeroHighlight } from './HeroHighlight'
+import { LampDemo } from './Lamp'
+import { TabsDemo } from './AnimatedTabs'
 
 /**
  * A component that renders the main application layout.
@@ -20,17 +24,20 @@ import FloatingNav from './FloatingNav'
 function AppLayout() {
     return (
         <div className="h-screen w-screen bg-cod-gray-950">
-            <DotBackgroundDemo type="full">
+            {/* <DotBackgroundDemo type="full"> */}
+            <HeroHighlight>
                 <div className="flex h-full w-full flex-col">
                     <Header></Header>
                     <Main>
                         <Container>
-                            <Outlet></Outlet>
+                            {/* <Outlet></Outlet> */}
+                            <TabsDemo></TabsDemo>
                         </Container>
                     </Main>
                     <FloatingNav></FloatingNav>
                 </div>
-            </DotBackgroundDemo>
+            </HeroHighlight>
+            {/* </DotBackgroundDemo> */}
         </div>
     )
 }
