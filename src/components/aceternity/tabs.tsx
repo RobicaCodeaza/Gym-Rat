@@ -78,7 +78,7 @@ export const Tabs = ({
                         )}
 
                         <span
-                            className={`relative block ${active.value === tab.value ? 'dark:text-cod-gray-100' : 'dark:text-cod-gray-300'} `}
+                            className={`relative block text-[1.3rem] font-semibold uppercase tracking-wide ${active.value === tab.value ? 'dark:text-cod-gray-100' : 'dark:text-cod-gray-300'} `}
                         >
                             {tab.title}
                         </span>
