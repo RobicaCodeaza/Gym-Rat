@@ -58,7 +58,7 @@ function FloatingNav() {
     ]
 
     return (
-        <div className="z-2 mt-auto self-center tab-land:bottom-10">
+        <div className="z-20 mb-5 self-center tab-land:mb-7">
             <FloatingDock items={items}></FloatingDock>
         </div>
     )
