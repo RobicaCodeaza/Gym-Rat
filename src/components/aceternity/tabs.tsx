@@ -3,11 +3,13 @@
 import { ReactNode, useState } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { NavLink } from 'react-router-dom'
 
-type Tab = {
+export type Tab = {
     title: string
     value: string
-    content?: string | React.ReactNode | any
+    content?: string | React.ReactNode
+    to: string
 }
 
 export const Tabs = ({
@@ -17,6 +19,7 @@ export const Tabs = ({
     tabClassName,
     contentClassName,
     children,
+    withRoute,
 }: {
     tabs: Tab[]
     containerClassName?: string
@@ -24,6 +27,7 @@ export const Tabs = ({
     tabClassName?: string
     contentClassName?: string
     children: ReactNode
+    withRoute?: 'yes' | 'no'
 }) => {
     const [active, setActive] = useState<Tab>(propTabs[0])
     const [tabs, setTabs] = useState<Tab[]>(propTabs)
@@ -46,45 +50,85 @@ export const Tabs = ({
                     containerClassName
                 )}
             >
-                {propTabs.map((tab, idx) => (
-                    <button
-                        key={tab.title}
-                        onClick={() => {
-                            moveSelectedTabToTop(idx)
-                        }}
-                        onMouseEnter={() => setHovering(true)}
-                        onMouseLeave={() => setHovering(false)}
-                        className={cn(
-                            'relative rounded-full px-4 py-2',
-                            tabClassName
-                        )}
-                        style={{
-                            transformStyle: 'preserve-3d',
-                        }}
-                    >
-                        {active.value === tab.value && (
-                            <motion.div
-                                layoutId="clickedbutton"
-                                transition={{
-                                    type: 'spring',
-                                    bounce: 0.3,
-                                    duration: 0.6,
-                                }}
-                                className={cn(
-                                    'absolute inset-0 rounded-full dark:bg-dodger-blue-700',
-                                    activeTabClassName
-                                )}
-                            />
-                        )}
-
-                        <span
-                            className={`relative block text-[1.3rem] font-semibold uppercase tracking-wide ${active.value === tab.value ? 'dark:text-cod-gray-100' : 'dark:text-cod-gray-300'} `}
+                {propTabs.map((tab, idx) => {
+                    return withRoute === 'yes' ? (
+                        <NavLink
+                            to={tab.to}
+                            key={tab.title}
+                            onClick={() => {
+                                moveSelectedTabToTop(idx)
+                            }}
+                            onMouseEnter={() => setHovering(true)}
+                            onMouseLeave={() => setHovering(false)}
+                            className={cn(
+                                'relative rounded-full px-4 py-2',
+                                tabClassName
+                            )}
+                            style={{
+                                transformStyle: 'preserve-3d',
+                            }}
                         >
-                            {tab.title}
-                        </span>
-                    </button>
-                ))}
-                {children}
+                            {active.value === tab.value && (
+                                <motion.div
+                                    layoutId="clickedbutton"
+                                    transition={{
+                                        type: 'spring',
+                                        bounce: 0.3,
+                                        duration: 0.6,
+                                    }}
+                                    className={cn(
+                                        'absolute inset-0 rounded-full dark:bg-dodger-blue-700',
+                                        activeTabClassName
+                                    )}
+                                />
+                            )}
+
+                            <span
+                                className={`relative block text-[1.3rem] font-semibold uppercase tracking-wide ${active.value === tab.value ? 'dark:text-cod-gray-100' : 'dark:text-cod-gray-300'} `}
+                            >
+                                {tab.title}
+                            </span>
+                        </NavLink>
+                    ) : (
+                        <button
+                            key={tab.title}
+                            onClick={() => {
+                                moveSelectedTabToTop(idx)
+                            }}
+                            onMouseEnter={() => setHovering(true)}
+                            onMouseLeave={() => setHovering(false)}
+                            className={cn(
+                                'relative rounded-full px-4 py-2',
+                                tabClassName
+                            )}
+                            style={{
+                                transformStyle: 'preserve-3d',
+                            }}
+                        >
+                            {active.value === tab.value && (
+                                <motion.div
+                                    layoutId="clickedbutton"
+                                    transition={{
+                                        type: 'spring',
+                                        bounce: 0.3,
+                                        duration: 0.6,
+                                    }}
+                                    className={cn(
+                                        'absolute inset-0 rounded-full dark:bg-dodger-blue-700',
+                                        activeTabClassName
+                                    )}
+                                />
+                            )}
+
+                            <span
+                                className={`relative block text-[1.3rem] font-semibold uppercase tracking-wide ${active.value === tab.value ? 'dark:text-cod-gray-100' : 'dark:text-cod-gray-300'} `}
+                            >
+                                {tab.title}
+                            </span>
+                        </button>
+                    )
+                })}
+                {/* {children} */}
             </div>
             <FadeInDiv
                 tabs={tabs}
@@ -121,8 +165,9 @@ export const FadeInDiv = ({
                         scale: 1 - idx * 0.1,
                         top: hovering ? idx * -50 : 0,
                         zIndex: -idx,
-                        opacity: idx < 3 ? 1 - idx * 0.1 : 0,
+                        // opacity: idx < 3 ? 1 - idx * 0.1 : 0,
                         height: 'calc(100% - 3rem)',
+                        opacity: isActive(tab) ? 1 : 0.05,
                     }}
                     animate={{
                         y: isActive(tab) ? [0, 40, 0] : 0,
