@@ -15,7 +15,7 @@ export function DotBackgroundDemo({
 }: PropsWithChildren & { type?: 'full' | 'half' }) {
     return (
         <div
-            className={`relative z-10 flex h-screen items-center justify-center bg-cod-gray-950/70 backdrop-blur-sm bg-dot-white/[0.3] ${type === 'half' ? 'phone:w-1/2' : 'phone:w-full'}`}
+            className={`relative z-10 flex h-screen w-full items-center justify-center bg-cod-gray-950/70 backdrop-blur-sm bg-dot-white/[0.3] ${type === 'half' ? 'phone:w-1/2' : 'phone:w-full'}`}
         >
             {/* Radial gradient for the container to give a faded look */}
             <div className="bg-black[mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] pointer-events-none absolute inset-0 flex items-center justify-center"></div>
