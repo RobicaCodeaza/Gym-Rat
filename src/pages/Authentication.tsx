@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import GeneralOverview from '../features/authentication/GeneralOverview'
-import AuthenticationContainer from '../features/authentication/LoginContainer'
+import AuthenticationContainer from '../features/authentication/AuthenticationContainer'
 import { useUser } from '../features/authentication/useUser'
 import { MovingGradient } from '../ui/MovingGradient'
 import { useNavigate } from 'react-router-dom'
@@ -18,9 +18,9 @@ function Authentication() {
     )
 
     return (
-        <div className="flex h-screen bg-cod-gray-950">
+        <div className="flex h-screen w-screen bg-cod-gray-950">
             <MovingGradient>
-                <div className="z-10 flex">
+                <div className="z-10 flex w-full">
                     <AuthenticationContainer></AuthenticationContainer>
                     <GeneralOverview></GeneralOverview>
                 </div>

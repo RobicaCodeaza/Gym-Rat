@@ -4,7 +4,7 @@ type FullPageProps = { children: ReactNode }
 
 function FullPage({ children }: FullPageProps) {
     return (
-        <div className="bg-picton-blue-100 flex h-screen w-screen items-center justify-center">
+        <div className="flex h-screen w-screen items-center justify-center bg-cod-gray-950">
             {children}
         </div>
     )
