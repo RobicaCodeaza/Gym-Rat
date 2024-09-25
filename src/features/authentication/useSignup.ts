@@ -25,7 +25,6 @@ export function useSignup() {
             )
         },
         onError: (error: Error) => {
-            console.log(error)
             toast.error(error.message)
         },
     })
