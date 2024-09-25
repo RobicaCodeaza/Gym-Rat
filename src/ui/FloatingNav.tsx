@@ -20,7 +20,7 @@ function FloatingNav() {
             href: 'dashboard',
         },
         {
-            title: 'Workout',
+            title: 'Gym',
             icon: (
                 <ButtonIcon otherClasses="w-8 h-8 phone:w-10 phone:h-10 tab-port:w-12 tab-port:h-12">
                     <GiGymBag></GiGymBag>
