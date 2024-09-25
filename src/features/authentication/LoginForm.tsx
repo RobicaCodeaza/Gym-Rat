@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils'
 import { IconBrandGoogle } from '@tabler/icons-react'
 import { useLogin } from './useLogin'
 import { type FieldErrors, type SubmitHandler, useForm } from 'react-hook-form'
+import Spinner from '../../ui/Spinner'
+import FullPage from '../../ui/FullPage'
 
 type LoginProps = {
     toggleForm: Dispatch<React.SetStateAction<boolean>>
@@ -19,9 +21,7 @@ export function LoginForm({ toggleForm }: LoginProps) {
     const { register, handleSubmit, formState, reset } = useForm<LoginInputs>()
     const { errors } = formState
     const { login, isLoggingIn } = useLogin()
-    console.log(isLoggingIn)
     const onSubmit: SubmitHandler<LoginInputs> = (data) => {
-        console.log(data)
         login(
             {
                 email: data.email,
@@ -38,6 +38,13 @@ export function LoginForm({ toggleForm }: LoginProps) {
     const onError: SubmitHandler<FieldErrors> = (error) => {
         console.log('error', error)
     }
+    if (isLoggingIn)
+        return (
+            <FullPage>
+                <Spinner></Spinner>
+            </FullPage>
+        )
+
     return (
         <div className="mx-auto h-auto rounded-none bg-cod-gray-900/10 p-12 shadow-input backdrop-blur-sm phone:min-w-[35rem] phone:rounded-2xl phone:border-[0.5px] phone:border-cod-gray-600 phone:p-12 tab-port:min-w-[40rem] tab-port:p-16 tab-land:p-20">
             <h2 className="flex items-center justify-center gap-4 text-center text-2xl font-bold leading-[1.8] text-cod-gray-800 tab-port:gap-6 dark:text-cod-gray-100">
