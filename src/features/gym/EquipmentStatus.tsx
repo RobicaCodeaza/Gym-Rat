@@ -2,8 +2,8 @@ import linePattern from '../../../public/linePattern.jpg'
 
 function EquipmentStatus() {
     return (
-        <div className="relative rounded-xl border border-cod-gray-600 shadow-cod-gray-100/5">
-            <div className="w-ful relative flex h-full flex-1 flex-col gap-4 bg-gradient-to-br from-cod-gray-900/95 to-cod-gray-600/60 px-10 py-10 shadow-lg backdrop-blur-none tab-land:gap-6">
+        <div className="relative overflow-hidden rounded-xl border border-cod-gray-600 shadow-cod-gray-100/5">
+            <div className="w-ful relative flex h-full flex-1 flex-col gap-4 bg-gradient-to-br from-starship-900/95 to-starship-600/65 px-10 py-10 shadow-lg backdrop-blur-none tab-land:gap-6">
                 <div>
                     <p className="text-md flex items-center gap-4 font-semibold uppercase text-dodger-blue-100">
                         <span>Total Equipment (Created + Existing)</span>
@@ -12,7 +12,7 @@ function EquipmentStatus() {
                             className="icon icon-tabler icon-tabler-discount-check tab-land:h-13 tab-land:w-13 h-12 w-12"
                             viewBox="0 0 24 24"
                             stroke="#e1dd11"
-                            fill="#454545"
+                            fill="#9b810d"
                         >
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" />
@@ -33,7 +33,7 @@ function EquipmentStatus() {
                             className="icon icon-tabler icon-tabler-discount-check tab-land:h-13 tab-land:w-13 h-12 w-12"
                             viewBox="0 0 24 24"
                             stroke="#e1dd11"
-                            fill="#454545"
+                            fill="#9b810d"
                         >
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M5 7.2a2.2 2.2 0 0 1 2.2 -2.2h1a2.2 2.2 0 0 0 1.55 -.64l.7 -.7a2.2 2.2 0 0 1 3.12 0l.7 .7c.412 .41 .97 .64 1.55 .64h1a2.2 2.2 0 0 1 2.2 2.2v1c0 .58 .23 1.138 .64 1.55l.7 .7a2.2 2.2 0 0 1 0 3.12l-.7 .7a2.2 2.2 0 0 0 -.64 1.55v1a2.2 2.2 0 0 1 -2.2 2.2h-1a2.2 2.2 0 0 0 -1.55 .64l-.7 .7a2.2 2.2 0 0 1 -3.12 0l-.7 -.7a2.2 2.2 0 0 0 -1.55 -.64h-1a2.2 2.2 0 0 1 -2.2 -2.2v-1a2.2 2.2 0 0 0 -.64 -1.55l-.7 -.7a2.2 2.2 0 0 1 0 -3.12l.7 -.7a2.2 2.2 0 0 0 .64 -1.55v-1" />
