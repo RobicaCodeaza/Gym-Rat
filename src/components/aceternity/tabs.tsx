@@ -135,7 +135,7 @@ export const Tabs = ({
                 active={active}
                 key={active.value}
                 hovering={hovering}
-                className={cn('mt-12', contentClassName)}
+                className={cn('', contentClassName)}
             />
         </>
     )
@@ -156,7 +156,7 @@ export const FadeInDiv = ({
         return tab.value === tabs[0].value
     }
     return (
-        <div className="relative h-full w-full">
+        <div className="relative h-full w-full overflow-y-scroll">
             {tabs.map((tab, idx) => (
                 <motion.div
                     key={tab.value}
@@ -166,7 +166,7 @@ export const FadeInDiv = ({
                         top: hovering ? idx * -50 : 0,
                         zIndex: -idx,
                         // opacity: idx < 3 ? 1 - idx * 0.1 : 0,
-                        height: 'calc(100% - 3rem)',
+                        height: 'calc(100%)',
                         opacity: isActive(tab) ? 1 : 0.05,
                     }}
                     animate={{

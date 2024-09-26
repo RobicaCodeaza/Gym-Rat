@@ -15,7 +15,7 @@ type TabsWithRouteProps = {
  */
 function TabsWithRoute({ withRoute, tabs, children }: TabsWithRouteProps) {
     return (
-        <div className="relative mx-auto flex h-full w-full flex-1 flex-col items-start justify-start [perspective:1000px]">
+        <div className="relative mx-auto flex h-full w-full flex-1 flex-col items-start justify-start gap-10 [perspective:1000px]">
             <Tabs withRoute={withRoute} tabs={tabs}>
                 {children}
             </Tabs>
