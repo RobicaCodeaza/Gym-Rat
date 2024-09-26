@@ -3,7 +3,7 @@ import linePattern from '../../../public/linePattern.jpg'
 function EquipmentStatus() {
     return (
         <div className="relative overflow-hidden rounded-xl border border-cod-gray-600 shadow-cod-gray-100/5">
-            <div className="w-ful relative flex h-full flex-1 flex-col gap-4 bg-gradient-to-br from-starship-900/95 to-starship-600/65 px-10 py-10 shadow-lg backdrop-blur-none tab-land:gap-6">
+            <div className="w-ful relative flex h-[35rem] h-full flex-1 flex-col gap-4 bg-gradient-to-br from-starship-900/95 to-starship-600/65 px-10 py-10 shadow-lg backdrop-blur-none tab-land:gap-6">
                 <div>
                     <p className="text-md flex items-center gap-4 font-semibold uppercase text-dodger-blue-100">
                         <span>Total Equipment (Created + Existing)</span>
