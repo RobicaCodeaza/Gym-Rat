@@ -19,7 +19,7 @@ function Filter({ filteredField, options }: FilterProps) {
 
     return (
         <div
-            className={`flex gap-2 rounded border border-cod-gray-950 bg-cod-gray-darker p-2 shadow-sm shadow-white/10`}
+            className={`flex gap-2 rounded border border-cod-gray-900 bg-cod-gray-darker p-2 shadow-sm shadow-cod-gray-100/15`}
         >
             {options.map((option) => (
                 <button

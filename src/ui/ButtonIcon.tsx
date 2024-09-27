@@ -30,7 +30,7 @@ function ButtonIcon<T extends ElementType>({
 
     return (
         <Component
-            className={`hover:bg-picton-blue-100 flex items-center justify-center rounded border-none bg-none p-2 transition-all duration-200 ${!hoverNone ? '' : 'pointer-events-none'}`}
+            className={`flex items-center justify-center rounded border-none bg-none p-2 transition-all duration-200 hover:bg-cod-gray-900 ${!hoverNone ? '' : 'pointer-events-none'}`}
             style={{ alignSelf: positionAlign, justifySelf: positionJustify }}
             onClick={onClick}
             {...props}
