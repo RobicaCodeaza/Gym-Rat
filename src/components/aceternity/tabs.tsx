@@ -61,7 +61,7 @@ export const Tabs = ({
                             onMouseEnter={() => setHovering(true)}
                             onMouseLeave={() => setHovering(false)}
                             className={cn(
-                                'relative rounded-full px-4 py-2',
+                                'relative rounded-xl px-4 py-2',
                                 tabClassName
                             )}
                             style={{
@@ -77,7 +77,7 @@ export const Tabs = ({
                                         duration: 0.6,
                                     }}
                                     className={cn(
-                                        'absolute inset-0 rounded-full dark:bg-dodger-blue-700',
+                                        'absolute inset-0 rounded-xl dark:bg-dodger-blue-700',
                                         activeTabClassName
                                     )}
                                 />
@@ -98,7 +98,7 @@ export const Tabs = ({
                             onMouseEnter={() => setHovering(true)}
                             onMouseLeave={() => setHovering(false)}
                             className={cn(
-                                'relative rounded-full px-4 py-2',
+                                'relative rounded-xl px-4 py-2',
                                 tabClassName
                             )}
                             style={{
@@ -114,7 +114,7 @@ export const Tabs = ({
                                         duration: 0.6,
                                     }}
                                     className={cn(
-                                        'absolute inset-0 rounded-full dark:bg-dodger-blue-700',
+                                        'absolute inset-0 rounded-xl dark:bg-dodger-blue-700',
                                         activeTabClassName
                                     )}
                                 />
