@@ -51,52 +51,48 @@ export function LoginForm({ toggleForm }: LoginProps) {
                 <span className="text-sm text-starship-600">❚█══█❚</span>GymRat
                 <span className="text-sm text-starship-600">❚█══█❚</span>
             </h2>
-            <p className="mb-8 mt-2 text-center text-sm text-cod-gray-600 dark:text-cod-gray-300">
+            <p className="mb-10 mt-2 text-center text-[1.3rem] text-cod-gray-600 dark:text-cod-gray-300">
                 Welcome back to your GymRat.
             </p>
 
             <form
-                className="flex-flex-col items-center"
+                className="flex flex-col items-center gap-1"
                 onSubmit={handleSubmit(onSubmit, onError)}
             >
-                <div className="flex w-full flex-col gap-1">
-                    <LabelInputContainer className="mb-8 phone:mb-10">
-                        <Label htmlFor="email">Email Address</Label>
-                        <Input
-                            id="email"
-                            placeholder="projectmayhem@fc.com"
-                            type="email"
-                            {...register('email', {
-                                required: 'Missing email',
-                            })}
-                        />
-                        {errors?.email?.message && (
-                            <p className="text-sm text-red-500">
-                                {errors?.email?.message}
-                            </p>
-                        )}
-                    </LabelInputContainer>
-                </div>
-                <div className="flex w-full flex-col gap-1">
-                    <LabelInputContainer className="mb-8 phone:mb-10">
-                        <Label htmlFor="password">Password</Label>
-                        <Input
-                            id="password"
-                            placeholder="••••••••"
-                            type="password"
-                            {...register('password', {
-                                required: 'Missing password',
-                            })}
-                        />
-                        {errors?.password?.message && (
-                            <p className="text-sm text-red-500">
-                                {errors?.password?.message}
-                            </p>
-                        )}
-                    </LabelInputContainer>
-                </div>
+                <LabelInputContainer className="mb-8 phone:mb-10">
+                    <Label htmlFor="email">Email Address</Label>
+                    <Input
+                        id="email"
+                        placeholder="projectmayhem@fc.com"
+                        type="email"
+                        {...register('email', {
+                            required: 'Missing email',
+                        })}
+                    />
+                    {errors?.email?.message && (
+                        <p className="text-sm text-red-500">
+                            {errors?.email?.message}
+                        </p>
+                    )}
+                </LabelInputContainer>
+                <LabelInputContainer className="mb-8 phone:mb-10">
+                    <Label htmlFor="password">Password</Label>
+                    <Input
+                        id="password"
+                        placeholder="••••••••"
+                        type="password"
+                        {...register('password', {
+                            required: 'Missing password',
+                        })}
+                    />
+                    {errors?.password?.message && (
+                        <p className="text-sm text-red-500">
+                            {errors?.password?.message}
+                        </p>
+                    )}
+                </LabelInputContainer>
                 <button
-                    className="group/btn relative block h-10 w-full rounded-lg bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-starship-500 dark:from-starship-700 dark:to-starship-600 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+                    className="group/btn relative flex h-10 w-full items-center justify-center rounded-lg bg-gradient-to-br from-black to-neutral-600 py-6 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-starship-500 dark:from-starship-700 dark:to-starship-600 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
                     type="submit"
                 >
                     Login &rarr;
@@ -107,18 +103,18 @@ export function LoginForm({ toggleForm }: LoginProps) {
 
                 <div className="mb-8 flex w-full flex-col">
                     <button
-                        className="group/btn relative flex h-10 items-center justify-start space-x-2 rounded-lg bg-cod-gray-darkest px-4 font-medium text-white shadow-input dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+                        className="group/btn relative flex h-10 items-center justify-center space-x-2 rounded-lg bg-cod-gray-darkest px-4 py-4 font-medium text-white shadow-input dark:bg-cod-gray-950 dark:shadow-[0px_0px_1px_1px_#454545]"
                         type="submit"
                     >
-                        <IconBrandGoogle className="h-4 w-4 text-cod-gray-800 dark:text-cod-gray-300" />
-                        <span className="text-sm text-cod-gray-700 dark:text-cod-gray-300">
+                        <IconBrandGoogle className="h-6 w-6 text-cod-gray-800 dark:text-cod-gray-300" />
+                        <span className="text-base text-cod-gray-700 dark:text-cod-gray-400">
                             Google
                         </span>
                         <BottomGradient />
                     </button>
                 </div>
                 <button
-                    className="mx-auto block cursor-pointer text-center text-sm text-cod-gray-700 underline transition-all duration-100 hover:text-cod-gray-800 disabled:cursor-not-allowed disabled:opacity-50 dark:text-cod-gray-300 hover:dark:text-cod-gray-200"
+                    className="mx-auto block cursor-pointer text-center text-[1.3rem] text-cod-gray-700 underline transition-all duration-100 hover:text-cod-gray-800 disabled:cursor-not-allowed disabled:opacity-50 dark:text-cod-gray-300 hover:dark:text-cod-gray-200"
                     disabled={isLoggingIn}
                     onClick={() => {
                         toggleForm(false)

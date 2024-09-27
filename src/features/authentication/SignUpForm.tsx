@@ -4,6 +4,7 @@ import { Input } from '@/components/aceternity/Input'
 import { cn } from '@/lib/utils'
 import { FieldErrors, SubmitHandler, useForm } from 'react-hook-form'
 import { useSignup } from './useSignup'
+import { IconBrandGoogle } from '@tabler/icons-react'
 
 type SignUpProps = {
     toggleForm: Dispatch<React.SetStateAction<boolean>>
@@ -46,7 +47,7 @@ export function SignUpForm({ toggleForm }: SignUpProps) {
                 <span className="text-sm text-starship-600">❚█══█❚</span>GymRat
                 <span className="text-sm text-starship-600">❚█══█❚</span>
             </h2>
-            <p className="mb-8 mt-2 text-center text-sm text-cod-gray-600 dark:text-cod-gray-300">
+            <p className="mb-8 mt-2 text-center text-[1.3rem] text-cod-gray-600 dark:text-cod-gray-300">
                 Create a GymRat account to maximise your gains.
             </p>
 
@@ -133,7 +134,7 @@ export function SignUpForm({ toggleForm }: SignUpProps) {
                     )}
                 </div>
                 <button
-                    className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] disabled:cursor-not-allowed disabled:opacity-50 dark:bg-starship-500 dark:from-dodger-blue-700 dark:to-dodger-blue-600 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+                    className="group/btn relative flex h-10 w-full items-center justify-center rounded-md bg-gradient-to-br from-black to-neutral-600 py-6 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] disabled:cursor-not-allowed disabled:opacity-50 dark:bg-starship-500 dark:from-dodger-blue-700 dark:to-dodger-blue-600 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
                     type="submit"
                     disabled={isSigningUp}
                 >
@@ -143,20 +144,20 @@ export function SignUpForm({ toggleForm }: SignUpProps) {
 
                 <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
 
-                {/* <div className="flex flex-col space-y-4">
+                <div className="mb-8 flex w-full flex-col">
                     <button
-                        className="group/btn relative flex h-10 w-1/2 items-center justify-start space-x-2 rounded-lg bg-cod-gray-darkest px-4 font-medium text-white shadow-input dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+                        className="group/btn relative flex h-10 items-center justify-center space-x-2 rounded-lg bg-cod-gray-darkest px-4 py-4 font-medium text-white shadow-input dark:bg-cod-gray-950 dark:shadow-[0px_0px_1px_1px_#454545]"
                         type="submit"
                     >
-                        <IconBrandGoogle className="h-4 w-4 text-cod-gray-800 dark:text-cod-gray-300" />
-                        <span className="text-sm text-cod-gray-700 dark:text-cod-gray-300">
+                        <IconBrandGoogle className="h-6 w-6 text-cod-gray-800 dark:text-cod-gray-300" />
+                        <span className="text-base text-cod-gray-700 dark:text-cod-gray-400">
                             Google
                         </span>
                         <BottomGradient />
                     </button>
-                </div> */}
+                </div>
                 <button
-                    className="mx-auto block cursor-pointer text-center text-sm text-cod-gray-700 underline transition-all duration-100 hover:text-cod-gray-800 dark:text-cod-gray-300 hover:dark:text-cod-gray-200"
+                    className="mx-auto block cursor-pointer text-center text-[1.3rem] text-cod-gray-700 underline transition-all duration-100 hover:text-cod-gray-800 dark:text-cod-gray-300 hover:dark:text-cod-gray-200"
                     onClick={() => {
                         toggleForm(true)
                         reset()
