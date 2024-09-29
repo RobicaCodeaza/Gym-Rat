@@ -1,7 +1,7 @@
 import linePattern from '../../../public/linePattern.jpg'
 function WorkoutsStatus() {
     return (
-        <div className="relative overflow-hidden rounded-xl border border-cod-gray-600 shadow-cod-gray-100/5">
+        <div className="relative flex-grow overflow-hidden rounded-xl border border-cod-gray-600 shadow-cod-gray-100/5">
             <div className="w-ful relative flex h-full flex-1 flex-col gap-4 bg-gradient-to-br from-dodger-blue-800/95 to-dodger-blue-400/60 px-10 py-10 shadow-lg backdrop-blur-none tab-land:gap-8">
                 <div>
                     <p className="text-md flex items-center gap-4 font-semibold uppercase text-dodger-blue-100">
