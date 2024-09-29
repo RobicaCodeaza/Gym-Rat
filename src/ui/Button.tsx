@@ -93,14 +93,14 @@ function Button<C extends ElementType>({
                     'rounded-md bg-starship-500 hover:bg-starship-600 text-cod-gray-50 hover:text-cod-gray-50 active:bg-starship-700  active:text-cod-gray-100',
                 accentTertiary:
                     'rounded-md bg-lima-500 hover:bg-lima-600 text-cod-gray-50 hover:text-cod-gray-50 active:bg-lima-700  active:text-cod-gray-100',
-                simplePrimary: `border rounded-md border-dodger-blue-800 hover:border-dodger-blue-600 text-dodger-blue-700 hover:text-dodger-blue-500 active:border-dodger-blue-700  active:text-dodger-blue-600`,
-                simpleTertiary: `border rounded-md border-lima-500 hover:border-lima-600 text-lima-500 hover:text-lima-600 active:border-lima-700  active:text-lima-700`,
-                simpleSecondary: `border rounded-md border-starship-500 hover:border-starship-600 text-starship-500 hover:text-starship-600 active:border-starship-700  active:text-starship-700`,
+                simplePrimary: `border bg-cod-gray-950 rounded-md border-dodger-blue-800 hover:border-dodger-blue-600 text-dodger-blue-700 hover:text-dodger-blue-500 active:border-dodger-blue-700  active:text-dodger-blue-600`,
+                simpleTertiary: `border bg-cod-gray-950 rounded-md border-lima-500 hover:border-lima-600 text-lima-500 hover:text-lima-600 active:border-lima-700  active:text-lima-700`,
+                simpleSecondary: `border bg-cod-gray-950 rounded-md border-starship-500 hover:border-starship-600 text-starship-500 hover:text-starship-600 active:border-starship-700  active:text-starship-700`,
                 subtleGrey:
                     'bg-cod-gray-100 rounded-md outline outline-offset-0 outline-none   text-cod-gray-500 hover:bg-cod-gray-50  hover:text-cod-gray-700 hover:outline-2 hover:outline-dodger-blue-400 focus:bg-cod-gray-50',
                 subtleWhite:
                     'bg-dodger-blue-50 rounded-md outline outline-none outline-offset-0  text-cod-gray-500  hover:text-cod-gray-700 hover:outline-2  hover:outline-dodger-blue-400',
-                danger: 'rounded-md bg-danger-600 hover:bg-danger-700 text-cod-gray-100 hover:text-cod-gray-200 active:bg-danger-800  active:text-cod-gray-300 ',
+                danger: 'rounded-md bg-danger-800 hover:bg-danger-600 text-cod-gray-200 hover:text-cod-gray-100 active:bg-danger-700  active:text-cod-gray-100 ',
             },
             size: {
                 tiny: 'px-3 py-1 text-center text-sm font-medium uppercase',
@@ -115,7 +115,7 @@ function Button<C extends ElementType>({
         return (
             <Component
                 onClick={onClickFunction}
-                className={`flex cursor-pointer items-center justify-center gap-2 ${button.variation[variation]} ${button.size[size]} ${otherClasses}`}
+                className={`flex cursor-pointer items-center justify-center gap-2 transition-all duration-300 ${button.variation[variation]} ${button.size[size]} ${otherClasses}`}
                 {...props}
             >
                 {children}

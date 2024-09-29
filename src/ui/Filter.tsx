@@ -24,7 +24,7 @@ function Filter({ filteredField, options }: FilterProps) {
                     key={option.label}
                     onClick={() => handleChange(option.value)}
                     disabled={currentValue === option.value}
-                    className={`rounded-md border border-cod-gray-100 bg-cod-gray-950 px-2 py-1 text-[1.4rem] font-medium transition-all duration-300 hover:bg-dodger-blue-900 hover:text-dodger-blue-100 disabled:bg-dodger-blue-800 ${currentValue === option.value ? 'bg-dodger-blue-800 text-dodger-blue-200' : ''}`}
+                    className={`rounded-md border border-cod-gray-700 bg-cod-gray-950 px-2 py-1 text-[1.4rem] font-medium transition-all duration-300 hover:bg-dodger-blue-900 hover:text-dodger-blue-100 disabled:bg-dodger-blue-800 ${currentValue === option.value ? 'bg-dodger-blue-800 text-dodger-blue-200' : ''}`}
                 >
                     {option.label}
                 </button>
