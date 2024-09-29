@@ -18,15 +18,13 @@ function Filter({ filteredField, options }: FilterProps) {
     }
 
     return (
-        <div
-            className={`flex gap-2 rounded border border-cod-gray-900 bg-cod-gray-darker p-2 shadow-sm shadow-cod-gray-100/15`}
-        >
+        <div className={`flex gap-2 rounded shadow-sm shadow-cod-gray-100/15`}>
             {options.map((option) => (
                 <button
                     key={option.label}
                     onClick={() => handleChange(option.value)}
                     disabled={currentValue === option.value}
-                    className={`rounded border border-cod-gray-100 bg-cod-gray-950 px-2 py-3 text-[1.4rem] font-medium transition-all duration-300 hover:bg-dodger-blue-600 hover:text-dodger-blue-100 disabled:bg-dodger-blue-700 ${currentValue === option.value ? 'bg-dodger-blue-700 text-dodger-blue-200' : ''}`}
+                    className={`rounded-md border border-cod-gray-100 bg-cod-gray-950 px-2 py-1 text-[1.4rem] font-medium transition-all duration-300 hover:bg-dodger-blue-900 hover:text-dodger-blue-100 disabled:bg-dodger-blue-800 ${currentValue === option.value ? 'bg-dodger-blue-800 text-dodger-blue-200' : ''}`}
                 >
                     {option.label}
                 </button>
