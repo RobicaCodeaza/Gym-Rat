@@ -19,7 +19,7 @@ function SortBy({ options }: SortByProps) {
         <Select
             onChange={(e) => handleChange(e)}
             options={options}
-            currentSortBy={currentSortBy}
+            currentValue={currentSortBy}
         ></Select>
     )
 }
