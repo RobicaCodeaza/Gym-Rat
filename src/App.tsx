@@ -16,6 +16,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import Dashboard from './pages/Dashboard'
 import Settings from './pages/Settings'
+import GymOverallView from './features/gym/GymOverallView'
 
 const queryClient = new QueryClient({
     defaultOptions: { queries: { retry: false, staleTime: 0 } },
