@@ -3,18 +3,9 @@ import Filter from '../../../ui/Filter'
 import Select from '../../../ui/Select'
 import SortBy from '../../../ui/SortBy'
 import TableOperations from '../../../ui/TableOperations'
+import FilterSelector from '../../../ui/FilterSelector'
 
 function WorkoutsTableOperations() {
-    const [searchParams, setSearchParams] = useSearchParams()
-    function handleChange(
-        e: React.ChangeEvent<HTMLSelectElement>,
-        field: string
-    ) {
-        searchParams.set(field, e.target.value)
-        if (searchParams.get('page')) searchParams.set('page', '1')
-        setSearchParams(searchParams)
-    }
-
     return (
         <TableOperations>
             <Filter
@@ -25,14 +16,13 @@ function WorkoutsTableOperations() {
                     { value: 'notWorkedOut', label: 'Not Worked Out' },
                 ]}
             ></Filter>
-            <Select
-                onChange={(e) => handleChange(e, 'workoutType')}
+            <FilterSelector
                 options={[
                     { value: 'push', label: 'Push' },
                     { value: 'pull', label: 'Pull' },
                 ]}
-                currentValue=""
-            ></Select>
+                filteredField="workoutType"
+            ></FilterSelector>
             <SortBy
                 options={[
                     {
