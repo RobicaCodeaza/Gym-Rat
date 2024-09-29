@@ -103,7 +103,7 @@ function Button<C extends ElementType>({
                 danger: 'rounded bg-danger-600 hover:bg-danger-700 text-cod-gray-100 hover:text-cod-gray-200 active:bg-danger-800  active:text-cod-gray-300',
             },
             size: {
-                tiny: 'px-2 py-1 text-center text-[1.2rem] font-medium uppercase',
+                tiny: 'px-2 py-1 text-center text-sm font-medium uppercase',
                 small: 'px-3 py-1 text-center text-[1.3rem] font-semibold uppercase tracking-wider phone:px-4 py-2',
                 medium: 'px-7 py-3 text-[1.4rem] tracking-wide',
                 large: 'px-10 py-5 text-[1.6rem] ',
