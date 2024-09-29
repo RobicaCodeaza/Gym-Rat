@@ -188,4 +188,7 @@ function Window({
         )
 }
 
+Modal.Window = Window
+Modal.Open = Open
+
 export default Modal
