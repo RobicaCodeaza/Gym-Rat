@@ -33,7 +33,7 @@ function Header({ children }: HeaderProps) {
     return (
         <div
             role="row"
-            className={`grid grid-cols-${columns} items-center gap-6 border-b border-cod-gray-600 bg-cod-gray-950 p-4 font-semibold uppercase tracking-wide text-cod-gray-200`}
+            className={`grid grid-cols-${columns} bacdrop-blur-sm items-center gap-6 border-b border-cod-gray-600 bg-cod-gray-darker/80 p-4 font-semibold uppercase tracking-wide text-cod-gray-200`}
         >
             {children}
         </div>
@@ -75,7 +75,7 @@ function Body<T>({ data, render }: BodyProps<T>) {
 
 function Footer({ children }: PropsWithChildren) {
     return (
-        <footer className="bg-grey-50 flex justify-center p-3">
+        <footer className="flex justify-center bg-cod-gray-darker/80 p-3 backdrop-blur-sm">
             {children}
         </footer>
     )
