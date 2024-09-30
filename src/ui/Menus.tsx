@@ -95,10 +95,10 @@ function Toggle({ id }: ToggleProps) {
 
     return (
         <button
-            className="rounded-2xl border-none bg-none p-2 hover:bg-picton-blue-100"
+            className="rounded-2xl border-none bg-none p-2 hover:bg-dodger-blue-900"
             onClick={handleClick}
         >
-            <RiMore2Line className="h-9 w-9 text-picton-blue-900"></RiMore2Line>
+            <RiMore2Line className="h-9 w-9 text-dodger-blue-800"></RiMore2Line>
         </button>
     )
 }
@@ -120,7 +120,7 @@ function List({ id, children }: ListProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: '-30%', scale: 0.8 }}
             transition={{ duration: 0.1, type: 'spring', stiffness: 100 }}
-            className={`fixed rounded-md border border-picton-blue-300 bg-picton-blue-75 shadow-sm`}
+            className={`fixed rounded-md border border-cod-gray-600 bg-cod-gray-900 shadow-sm`}
             style={{ top: `${position.y}px`, right: `${position.x}px` }}
             ref={ref}
         >
@@ -153,7 +153,7 @@ function Button<T extends ElementType>({
     return (
         <li>
             <Component
-                className="items-left flex w-full items-center gap-2 rounded-md border-none bg-none px-5 py-3 text-[1.4rem] hover:bg-picton-blue-150"
+                className="items-left flex w-full items-center gap-2 rounded-md border-none bg-none px-5 py-3 text-[1.4rem] hover:bg-cod-gray-800"
                 onClick={handlerButton}
             >
                 {icon}
