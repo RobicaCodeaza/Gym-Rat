@@ -49,7 +49,7 @@ const Tag = ({ type, children }: PropsWithChildren<TagTypes>) => {
 
     return (
         <span
-            className={`rounded-full px-3 py-1 text-xs font-bold uppercase ${colorClasses[type]}`}
+            className={`flex items-center justify-center gap-1 rounded-full px-4 py-1 text-sm font-bold uppercase ${colorClasses[type]}`}
         >
             {children}
         </span>
