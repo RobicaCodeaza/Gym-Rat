@@ -3,8 +3,8 @@ import Button from './Button'
 
 type ConfirmDeleteProps = {
     resourceName: string
-    onConfirm: () => void
-    disabled: boolean
+    onConfirm?: () => void
+    disabled?: boolean
     onCloseModal?: () => void
 }
 
@@ -15,7 +15,7 @@ function ConfirmDelete({
     onCloseModal,
 }: ConfirmDeleteProps) {
     function handleDelete() {
-        onConfirm()
+        onConfirm?.()
         onCloseModal?.()
     }
 

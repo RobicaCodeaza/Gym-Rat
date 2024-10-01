@@ -172,7 +172,7 @@ export const FadeInDiv = memo(function FadeInDiv({
         return tab.value === tabs[0].value
     }
     return (
-        <div className="relative h-full w-full overflow-y-scroll">
+        <div className="relative flex h-full w-full overflow-y-scroll">
             {tabs.map((tab, idx) => {
                 return (
                     <motion.div

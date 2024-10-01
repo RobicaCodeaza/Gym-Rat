@@ -1,6 +1,4 @@
-import { useSearchParams } from 'react-router-dom'
 import Filter from '../../../ui/Filter'
-import Select from '../../../ui/Select'
 import SortBy from '../../../ui/SortBy'
 import TableOperations from '../../../ui/TableOperations'
 import FilterSelector from '../../../ui/FilterSelector'
