@@ -54,7 +54,19 @@ function WorkoutRow({ workout }: WorkoutRowProps) {
                 <span className="tracking-wider text-cod-gray-300">
                     {workout.lastTimeWorked}
                 </span>
-                <span className="text-sm text-dodger-blue-400">
+                <span className="max-w-content flex items-center gap-1 self-center rounded-full bg-dodger-blue-200 px-4 py-1 text-sm text-cod-gray-600">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="icon icon-tabler icon-tabler-hourglass-low h-8 w-8"
+                        viewBox="0 0 24 24"
+                        stroke="#0f61be"
+                        fill="none"
+                    >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M6.5 17h11" />
+                        <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z" />
+                        <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z" />
+                    </svg>
                     {workout.totalTime} min
                 </span>
             </div>
@@ -66,7 +78,7 @@ function WorkoutRow({ workout }: WorkoutRowProps) {
                     </span>
                     <ul>
                         <li className="text-sm uppercase text-cod-gray-400">
-                            - Exercise 1
+                            Exercise 1
                         </li>
                         <li className="text-sm uppercase text-cod-gray-400">
                             Exercise 1
