@@ -6,7 +6,7 @@ import {
 } from 'react'
 
 type TableContextType = {
-    columns: number
+    columns: string
 }
 
 const TableContext = createContext<TableContextType | null>(null)
@@ -14,7 +14,7 @@ const TableContext = createContext<TableContextType | null>(null)
 function Table({ columns, children }: PropsWithChildren<TableContextType>) {
     return (
         <TableContext.Provider value={{ columns }}>
-            <div className="border-grey-600 bg-grey-0 overflow-hidden rounded-lg border text-base md:overflow-x-scroll">
+            <div className="overflow-hidden rounded-lg border border-cod-gray-700 bg-cod-gray-950 text-base md:overflow-x-scroll">
                 {children}
             </div>
         </TableContext.Provider>
@@ -30,10 +30,12 @@ function Header({ children }: HeaderProps) {
         throw new Error('Your component does not have access to Table context')
 
     const { columns } = context
+    const gridTemplateColumns =
+        columns === 'tableWorkouts' ? `grid-cols-tableWorkouts` : ''
     return (
         <div
-            role="row"
-            className={`grid grid-cols-${columns} bacdrop-blur-sm items-center gap-6 border-b border-cod-gray-600 bg-cod-gray-darker/80 p-4 font-semibold uppercase tracking-wide text-cod-gray-200`}
+            // role="row"
+            className={`grid ${gridTemplateColumns} items-center gap-3 border-b border-cod-gray-600 bg-dodger-blue-950 p-3 font-semibold uppercase tracking-wide text-cod-gray-200 backdrop-blur-sm tab-land:gap-6 tab-land:px-6 tab-land:py-3 tab-land:text-center`}
         >
             {children}
         </div>
@@ -47,11 +49,12 @@ function Row({ children }: PropsWithChildren) {
         throw new Error('Your component does not have access to Table context')
 
     const { columns } = context
-
+    const gridTemplateColumns =
+        columns === 'tableWorkouts' ? `tab-land:grid-cols-tableWorkouts` : ''
     return (
         <div
-            role="row"
-            className={`grid grid-cols-${columns} border-grey-100 items-center gap-6 border-b p-3 last:border-b-0 md:flex md:flex-col md:gap-3 md:text-center`}
+            // role="row"
+            className={`border-starship-950 ${gridTemplateColumns} flex flex-col items-center gap-3 border-b bg-cod-gray-950 p-3 last:border-b-0 tab-land:grid tab-land:gap-6 tab-land:p-6 tab-land:text-center`}
         >
             {children}
         </div>

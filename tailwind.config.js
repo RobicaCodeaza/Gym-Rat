@@ -1,3 +1,5 @@
+import { after } from 'node:test'
+
 const svgToDataUri = require('mini-svg-data-uri')
 
 const colors = require('tailwindcss/colors')
@@ -15,6 +17,9 @@ export default {
         './src/**/*.{ts,tsx}',
     ],
     theme: {
+        gridTemplateColumns: {
+            tableWorkouts: '1fr 1fr 2fr 0.5fr 1fr 0.5fr',
+        },
         extend: {
             fontSize: {
                 xs: '10px', // Overline
@@ -33,6 +38,7 @@ export default {
                 regular: 400,
                 medium: 500,
             },
+
             keyframes: {
                 shimmer: {
                     from: {
@@ -40,6 +46,20 @@ export default {
                     },
                     to: {
                         backgroundPosition: '-200% 0',
+                    },
+                },
+                after: {
+                    '0%': {
+                        transform: 'translateX(-50%) scale(0)',
+                        opacity: '0',
+                    },
+                    '50%': {
+                        transform: 'translateX(-50%) scale(0.5)',
+                        opacity: '0.5',
+                    },
+                    100: {
+                        transform: 'translateX(-50%) scale(1)',
+                        opacity: '1',
                     },
                 },
                 moveHorizontal: {
@@ -93,6 +113,7 @@ export default {
                 fifth: 'moveInCircle 20s ease infinite',
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
+                afterEffect: 'after 1s ease-out',
             },
             colors: {
                 'cod-gray': {
