@@ -14,7 +14,7 @@ const TableContext = createContext<TableContextType | null>(null)
 function Table({ columns, children }: PropsWithChildren<TableContextType>) {
     return (
         <TableContext.Provider value={{ columns }}>
-            <div className="overflow-hidden rounded-lg border border-cod-gray-700 bg-cod-gray-950 text-base md:overflow-x-scroll">
+            <div className="overflow-hidden overflow-x-scroll rounded-lg border border-cod-gray-700 bg-cod-gray-950 text-base">
                 {children}
             </div>
         </TableContext.Provider>
@@ -31,11 +31,11 @@ function Header({ children }: HeaderProps) {
 
     const { columns } = context
     const gridTemplateColumns =
-        columns === 'tableWorkouts' ? `grid-cols-tableWorkouts` : ''
+        columns === 'tableWorkouts' ? `tab-port:grid-cols-tableWorkouts` : ''
     return (
         <div
             // role="row"
-            className={`grid ${gridTemplateColumns} items-center gap-3 border-b border-cod-gray-600 bg-dodger-blue-950 p-3 font-semibold uppercase tracking-wide text-cod-gray-200 backdrop-blur-sm tab-land:gap-6 tab-land:px-6 tab-land:py-3 tab-land:text-center`}
+            className={`hidden tab-port:grid ${gridTemplateColumns} items-center gap-3 border-b border-cod-gray-800 bg-dodger-blue-950 p-3 font-semibold uppercase tracking-wide text-cod-gray-200 backdrop-blur-sm tab-land:gap-6 tab-land:px-6 tab-land:py-3 tab-land:text-center`}
         >
             {children}
         </div>
@@ -50,11 +50,11 @@ function Row({ children }: PropsWithChildren) {
 
     const { columns } = context
     const gridTemplateColumns =
-        columns === 'tableWorkouts' ? `tab-land:grid-cols-tableWorkouts` : ''
+        columns === 'tableWorkouts' ? `tab-port:grid-cols-tableWorkouts` : ''
     return (
         <div
             // role="row"
-            className={`border-starship-950 ${gridTemplateColumns} flex flex-col items-center gap-3 border-b bg-cod-gray-950 p-3 last:border-b-0 tab-land:grid tab-land:gap-6 tab-land:p-6 tab-land:text-center`}
+            className={`border-starship-950 ${gridTemplateColumns} flex flex-col items-center gap-6 border-b bg-cod-gray-950 p-6 last:border-b-0 tab-port:grid tab-land:gap-6 tab-land:text-center`}
         >
             {children}
         </div>
