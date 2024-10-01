@@ -65,7 +65,7 @@ function WorkoutsTable() {
                 <Table.Body
                     data={workouts}
                     render={(workout) => (
-                        <WorkoutRow key={workout.name} workout={workout} />
+                        <WorkoutRow key={workout.id} workout={workout} />
                     )}
                 />
                 <Table.Footer>
