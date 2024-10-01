@@ -12,7 +12,6 @@ const useOutsideClick: UseOutsideProps = (handler, listenCapturing) => {
         function () {
             function handleClick(e: MouseEvent) {
                 if (ref.current && !ref.current.contains(e.target as Node)) {
-                    console.log(e.target)
                     handler()
                 }
             }

@@ -59,7 +59,7 @@ function Open({ children, opensWindow }: PropsWithChildren<OpenProps>) {
 }
 
 type WindowProps = {
-    titleOfWindow: string
+    titleOfWindow?: string
     nameOfWindow: string
     type?: 'regular' | 'form'
     animation?: 'yes' | 'no'
@@ -86,11 +86,11 @@ function Window({
     if (animation === 'yes')
         return createPortal(
             <div
-                className={`fixed left-0 top-0 h-screen w-full ${type === 'regular' ? 'bg-backdrop-color-50' : 'bg-dodger-blue-900 bg-opacity-30'} backdrop-blur-sm`}
+                className={`fixed left-0 top-0 z-20 h-screen w-full ${type === 'regular' ? 'bg-backdrop-color-50' : 'bg-dodger-blue-900 bg-opacity-30'} backdrop-blur-sm`}
                 key="modal"
             >
                 <motion.div
-                    className={`tab-land:px-18 tab-land:py-18 fixed left-1/2 top-1/2 flex translate-x-[-50%] translate-y-[-50%] flex-col gap-4 rounded-2xl bg-cod-gray-900 px-4 py-4 shadow-lg phone:px-8 phone:py-8 tab-port:px-12 tab-port:py-12 ${type === 'regular' ? '' : 'bg-gradient-to-tl from-dodger-blue-950 to-dodger-blue-600'}`}
+                    className={`tab-land:px-18 tab-land:py-18 fixed left-1/2 top-1/2 z-20 flex translate-x-[-50%] translate-y-[-50%] flex-col gap-4 rounded-2xl bg-cod-gray-900 px-4 py-4 shadow-lg phone:px-8 phone:py-8 tab-port:px-12 tab-port:py-12 ${type === 'regular' ? '' : 'bg-gradient-to-tl from-dodger-blue-950 to-dodger-blue-600'}`}
                     initial={{ scale: 0.8, opacity: 0, y: 0 }}
                     animate={{
                         scale: 1,
@@ -113,13 +113,13 @@ function Window({
                         <ButtonIcon
                             positionAlign="end"
                             onClick={close}
-                            otherClasses="text-cod-gray-200 "
+                            otherClasses="text-cod-gray-200"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-12 w-12"
                                 viewBox="0 0 24 24"
-                                stroke="#e7e7e7"
+                                stroke="#d1d1d1"
                                 fill="none"
                             >
                                 <path
@@ -127,8 +127,8 @@ function Window({
                                     d="M0 0h24v24H0z"
                                     fill="none"
                                 />
-                                <path d="M10 10l4 4m0 -4l-4 4" />
-                                <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" />
+                                <path d="M18 6l-12 12" />
+                                <path d="M6 6l12 12" />
                             </svg>
                         </ButtonIcon>
                     </div>
@@ -144,11 +144,11 @@ function Window({
     else
         return createPortal(
             <div
-                className={`fixed left-0 top-0 h-screen w-full ${type === 'regular' ? 'bg-backdrop-color-50' : 'bg-dodger-blue-900 bg-opacity-30'} backdrop-blur-sm`}
+                className={`fixed left-0 top-0 z-20 h-screen w-full ${type === 'regular' ? 'bg-backdrop-color-50' : 'bg-cod-gray-900 bg-opacity-30'} backdrop-blur-sm`}
                 key="modal"
             >
                 <div
-                    className={`tab-land:px-18 tab-land:py-18 fixed left-1/2 top-1/2 flex translate-x-[-50%] translate-y-[-50%] flex-col gap-4 rounded-2xl bg-cod-gray-900 px-4 py-4 shadow-lg phone:px-8 phone:py-8 tab-port:px-12 tab-port:py-12 ${type === 'regular' ? '' : 'bg-gradient-to-tl from-dodger-blue-950 to-dodger-blue-600'}`}
+                    className={`tab-land:px-18 tab-land:py-18 fixed left-1/2 top-1/2 z-20 flex translate-x-[-50%] translate-y-[-50%] flex-col gap-4 rounded-2xl bg-cod-gray-900 px-4 py-4 shadow-lg phone:px-8 phone:py-8 tab-port:px-12 tab-port:py-12 ${type === 'regular' ? '' : 'bg-gradient-to-tl from-cod-gray-950 to-cod-gray-900'}`}
                     ref={ref}
                 >
                     <div className="flex items-center justify-between">
@@ -164,7 +164,7 @@ function Window({
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-12 w-12"
                                 viewBox="0 0 24 24"
-                                stroke="#e7e7e7"
+                                stroke="#d1d1d1"
                                 fill="none"
                             >
                                 <path
@@ -172,8 +172,8 @@ function Window({
                                     d="M0 0h24v24H0z"
                                     fill="none"
                                 />
-                                <path d="M10 10l4 4m0 -4l-4 4" />
-                                <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" />
+                                <path d="M18 6l-12 12" />
+                                <path d="M6 6l12 12" />
                             </svg>
                         </ButtonIcon>
                     </div>

@@ -95,10 +95,10 @@ function Toggle({ id }: ToggleProps) {
 
     return (
         <button
-            className="rounded-2xl border-none bg-none p-2 hover:bg-dodger-blue-900"
+            className="rounded-2xl border-none bg-none p-2 transition-all hover:bg-dodger-blue-100"
             onClick={handleClick}
         >
-            <RiMore2Line className="h-9 w-9 text-dodger-blue-800"></RiMore2Line>
+            <RiMore2Line className="h-9 w-9 text-dodger-blue-600"></RiMore2Line>
         </button>
     )
 }
@@ -113,6 +113,7 @@ function List({ id, children }: ListProps) {
     const ref = useOutsideClick(close, false) as LegacyRef<HTMLUListElement>
 
     if (openId !== id) return
+    console.log(openId, position)
 
     return createPortal(
         <motion.ul
@@ -120,7 +121,7 @@ function List({ id, children }: ListProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: '-30%', scale: 0.8 }}
             transition={{ duration: 0.1, type: 'spring', stiffness: 100 }}
-            className={`fixed rounded-md border border-cod-gray-600 bg-cod-gray-900 shadow-sm`}
+            className={`fixed z-10 rounded-md border border-cod-gray-600 bg-cod-gray-900 shadow-sm`}
             style={{ top: `${position.y}px`, right: `${position.x}px` }}
             ref={ref}
         >
