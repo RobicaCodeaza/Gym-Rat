@@ -9,7 +9,45 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      Workout: {
+        Row: {
+          completionRate: number | null
+          exercises: Json[]
+          id: number
+          lastWorkedOut: string | null
+          name: string
+          supersets: Json[] | null
+          totalSets: number | null
+          totalWorkoutTime: number[] | null
+          user_id: string
+          workoutType: string
+        }
+        Insert: {
+          completionRate?: number | null
+          exercises: Json[]
+          id?: number
+          lastWorkedOut?: string | null
+          name: string
+          supersets?: Json[] | null
+          totalSets?: number | null
+          totalWorkoutTime?: number[] | null
+          user_id?: string
+          workoutType: string
+        }
+        Update: {
+          completionRate?: number | null
+          exercises?: Json[]
+          id?: number
+          lastWorkedOut?: string | null
+          name?: string
+          supersets?: Json[] | null
+          totalSets?: number | null
+          totalWorkoutTime?: number[] | null
+          user_id?: string
+          workoutType?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

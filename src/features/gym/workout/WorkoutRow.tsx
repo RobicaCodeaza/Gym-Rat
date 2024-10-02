@@ -46,7 +46,7 @@ type WorkoutRowProps = {
 function WorkoutRow({ workout }: WorkoutRowProps) {
     return (
         <Table.Row>
-            <div className="after:animate-afterEffect relative text-base font-bold uppercase tracking-wider text-cod-gray-100 after:absolute after:-bottom-1 after:left-1/2 after:h-1 after:w-1/2 after:-translate-x-1/2 after:bg-starship-200 after:content-['']">
+            <div className="relative text-base font-bold uppercase tracking-wider text-cod-gray-100 after:absolute after:-bottom-1 after:left-1/2 after:h-1 after:w-1/2 after:-translate-x-1/2 after:animate-afterEffect after:bg-starship-200 after:content-['']">
                 {workout.name}
             </div>
 
@@ -72,7 +72,7 @@ function WorkoutRow({ workout }: WorkoutRowProps) {
             </div>
 
             <div className="flex justify-center">
-                <div className="border-r border-cod-gray-800 px-4">
+                <div className="animate-afterEffect border-r border-cod-gray-800 px-4">
                     <span className="text-dodger-blue-400">
                         <strong> 8</strong> exercises:
                     </span>
@@ -85,7 +85,7 @@ function WorkoutRow({ workout }: WorkoutRowProps) {
                         </li>
                     </ul>
                 </div>
-                <div className="px-4">
+                <div className="animate-afterEffect px-4">
                     <span className="text-dodger-blue-400">
                         <strong> 9</strong> sets:
                     </span>
