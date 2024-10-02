@@ -7,19 +7,10 @@ function DecksModifiers() {
     return (
         <Modal>
             <div className="flex flex-col gap-2 phone:flex-row phone:gap-6">
-                <Modal.Open opensWindow="addWorkout">
-                    <Button as="div" variation="simplePrimary" size="tiny">
-                        <FiPlus className="h-8 w-8"></FiPlus>
-                        New Workout
-                    </Button>
-                </Modal.Open>
-
-                <Modal.Window
-                    titleOfWindow="Create a Workout"
-                    nameOfWindow="addWorkout"
-                >
-                    {/* <CreateDeckForm deckToEdit={undefined}></CreateDeckForm> */}
-                </Modal.Window>
+                <Button as="div" variation="simplePrimary" size="tiny">
+                    <FiPlus className="h-8 w-8"></FiPlus>
+                    New Workout
+                </Button>
 
                 <Modal.Open opensWindow="deleteAllWorkouts">
                     <Button as="div" variation="danger" size="tiny">
