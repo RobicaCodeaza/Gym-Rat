@@ -3,11 +3,12 @@ import { Tables } from '@/types/database.types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import toast from 'react-hot-toast'
-export function useCreateQuiz() {
+export function useCreateWorkout() {
     const queryClient = useQueryClient()
 
     const { isPending: isCreating, mutate: createWorkout } = useMutation({
-        mutationFn: (workout: Tables<'Workout'>) => createEditWorkoutApi(workout, null),
+        mutationFn: (data: Tables<'Workout'>) =>
+            createEditWorkoutApi(data, null),
         onSuccess: async () => {
             toast.success('Workout successfully created.')
             await queryClient.invalidateQueries({

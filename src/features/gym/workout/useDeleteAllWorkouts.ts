@@ -2,7 +2,7 @@ import { deleteAllWorkouts as deleteAllWorkoutsApi } from '@/services/apiWorkout
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 
-export function useDeleteDeck() {
+export function useDeleteAllWorkouts() {
     const queryClient = useQueryClient()
 
     const { isPending: isDeleting, mutate: deleteAllWorkouts } = useMutation({

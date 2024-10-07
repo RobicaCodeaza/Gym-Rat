@@ -1,7 +1,8 @@
 import Button from '@/ui/Button'
-import Form from '@/ui/Form'
 import FormRow from '@/ui/FormRow'
-import Input from '@/ui/Input'
+import { Input } from '@/components/aceternity/Input'
+import { Label } from '@/components/aceternity/Label'
+import { LabelInputContainer } from '@/ui/FormRow'
 import {
     type SubmitErrorHandler,
     type SubmitHandler,
@@ -9,12 +10,11 @@ import {
     type FieldError,
 } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { useCreateDeck } from './useCreateCard'
-import { useEditCard } from './useEditCard'
-import { type UserType } from '@/ui/ProtectedRoute'
-import { useLocalStorageState } from '@/hooks/useLocalStorageState'
+import { useCreateWorkout } from './useCreateWorkout'
+import { useEditWorkout } from './useEditWorkout'
 import { Tables } from '@/types/database.types'
 import Spinner from '@/ui/Spinner'
+import Select from '../../../ui/Select'
 
 type CreateWorkoutFormProps = {
     workoutToEdit?: Tables<'Workout'>
@@ -27,18 +27,9 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
 
     let editValuesDefined
 
-    const { isCreating, createCard } = useCreateDeck()
-    const { isUpdating, updateCard } = useEditCard()
+    const { isCreating, createWorkout } = useCreateWorkout()
+    const { isUpdating, updateWorkout } = useEditWorkout()
     const isWorking = isCreating ?? isUpdating
-
-    //Getting User_id for the form creation of an object
-    const [user, _] = useLocalStorageState<UserType>(
-        {
-            user_id: '',
-            user_provider: '',
-        },
-        'user'
-    )
 
     const { register, handleSubmit, formState, reset } = useForm<
         Tables<'Workout'>
@@ -49,10 +40,8 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
 
     const onSubmit: SubmitHandler<Tables<'Workout'>> = (data) => {
         if (isEditingSession) {
-            const newData = { ...data }
-            console.log(newData)
-            updateCard(
-                { newData, id: editId! },
+            updateWorkout(
+                { data, id: editId! },
                 {
                     onSuccess: () => {
                         reset()
@@ -60,11 +49,9 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
                 }
             )
         } else {
-            const newData = { ...data, user_id: user.user_id }
-            createCard(newData, {
+            createWorkout(data, {
                 onSuccess: () => {
                     reset()
-                    resetNumAnswers()
                 },
             })
         }
@@ -76,7 +63,24 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
     if (isWorking) return <Spinner></Spinner>
 
     return (
-        <Form variation="regular" onSubmit={handleSubmit(onSubmit, onError)}>
+        <form
+            className="flex flex-col items-center gap-1"
+            onSubmit={handleSubmit(onSubmit, onError)}
+        >
+                {Array.from({ length: 1 }, (_, index) => {
+                    return (
+                        <Select
+                            key={index}
+                            id="exercises"
+                            defaultValue={}
+
+                            {...register(, {
+                                required: 'Missing Exercise',
+                            })}
+                        />
+                    )
+                })}
+
             {/* <DrawerFooter> */}
             <FormRow label="Question" error={errors?.question?.message}>
                 <Input
@@ -110,23 +114,6 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
                 </FormRow>
             ))}
 
-            {numAnswers > 1 && (
-                <FormRow
-                    label={`Correct answer`}
-                    error={errors.correctAnswer?.message}
-                >
-                    <Input
-                        type="number"
-                        id="correctAnswer"
-                        placeholder="1"
-                        disabled={isWorking}
-                        {...register('correctAnswer', {
-                            required: 'This field is required',
-                        })}
-                    ></Input>
-                </FormRow>
-            )}
-
             <div className="flex justify-between gap-6">
                 <Button
                     type="reset"
@@ -144,7 +131,7 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
                     Submit
                 </Button>
             </div>
-        </Form>
+        </form>
     )
 }
 

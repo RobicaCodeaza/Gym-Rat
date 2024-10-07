@@ -3,11 +3,12 @@ import { Tables } from '@/types/database.types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import toast from 'react-hot-toast'
-export function useCreateQuiz() {
+export function useEditWorkout() {
     const queryClient = useQueryClient()
 
-    const { isPending: isUpdating, mutate: editWorkout } = useMutation({
-        mutationFn: ({workout,id} : {workout:Tables<'Workout'>, id: string}) => createEditWorkoutApi(workout, id),
+    const { isPending: isUpdating, mutate: updateWorkout } = useMutation({
+        mutationFn: ({ data, id }: { data: Tables<'Workout'>; id: number }) =>
+            createEditWorkoutApi(data, id),
         onSuccess: async () => {
             toast.success('Workout successfully edited.')
             await queryClient.invalidateQueries({
@@ -20,5 +21,5 @@ export function useCreateQuiz() {
             ),
     })
 
-    return { isUpdating, editWorkout }
+    return { isUpdating, updateWorkout }
 }

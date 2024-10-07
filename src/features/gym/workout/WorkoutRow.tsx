@@ -1,9 +1,6 @@
-import {
-    HiArrowDownOnSquare,
-    HiEye,
-    HiArrowUpOnSquare,
-    HiTrash,
-} from 'react-icons/hi2'
+import { HiEye, HiTrash } from 'react-icons/hi2'
+import { MdOutlineModeEdit } from 'react-icons/md'
+
 import { CgGym } from 'react-icons/cg'
 // import { format, isToday } from 'date-fns'
 // import { formatCurrency } from '../../utils/helpers'
@@ -15,6 +12,8 @@ import Menus from '@/ui/Menus'
 // import Spinner from '../../ui/Spinner'
 import Modal from '@/ui/Modal'
 import ConfirmDelete from '@/ui/ConfirmDelete'
+import { useDeleteWorkout } from './useDeleteWorkout'
+import FormWorkoutTrigger from './FormWorkoutTrigger'
 
 export type Workout = {
     id: number
@@ -44,6 +43,8 @@ type WorkoutRowProps = {
 }
 
 function WorkoutRow({ workout }: WorkoutRowProps) {
+    const { deleteWorkout, isDeleting } = useDeleteWorkout()
+
     return (
         <Table.Row>
             <div className="relative text-base font-bold uppercase tracking-wider text-cod-gray-100 after:absolute after:-bottom-1 after:left-1/2 after:h-1 after:w-1/2 after:-translate-x-1/2 after:animate-afterEffect after:bg-starship-200 after:content-['']">
@@ -129,6 +130,14 @@ function WorkoutRow({ workout }: WorkoutRowProps) {
                         >
                             See Details
                         </Menus.Button>
+                        <FormWorkoutTrigger width="auto">
+                            <Menus.Button
+                                icon={<MdOutlineModeEdit></MdOutlineModeEdit>}
+                                // onClick={() => navigate(`/bookings/${bookingId}`)}
+                            >
+                                EditWorkout
+                            </Menus.Button>
+                        </FormWorkoutTrigger>
                         {/* {status === 'unconfirmed' && (
                             <Menus.Button
                                 icon={
@@ -154,7 +163,8 @@ function WorkoutRow({ workout }: WorkoutRowProps) {
                         <Modal.Open opensWindow="delete">
                             <Menus.Button
                                 icon={<HiTrash></HiTrash>}
-                                // disabled={isDeleting}
+                                disabled={isDeleting}
+                                onClick={() => deleteWorkout(workout.id)}
                             >
                                 Delete
                             </Menus.Button>
