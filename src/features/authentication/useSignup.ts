@@ -21,7 +21,7 @@ export function useSignup() {
             // console.log('user', user)
             // queryClient.setQueryData(['user'], user)
             toast.success(
-                'Account successfully created.Please verify the new account from the user email address.'
+                'Account successfully created. Please verify the new account from the user email address.'
             )
         },
         onError: (error: Error) => {
