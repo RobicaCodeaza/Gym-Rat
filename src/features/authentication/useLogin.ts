@@ -16,7 +16,6 @@ export function useLogin() {
             password: string
         }) => loginApi(email, password),
         onSuccess: (user) => {
-            console.log('user', user)
             queryClient.setQueryData(['user'], user)
             navigate('/dashboard', { replace: true })
             toast.success('You have been logged successfully.')
