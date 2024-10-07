@@ -12,17 +12,17 @@ import ButtonIcon from '@/ui/ButtonIcon'
 import CreateWorkoutForm from './CreateWorkoutForm.tsx'
 import { Tables } from '@/types/database.types.ts'
 
-type FormTriggerFlashcardsProps = {
+type FormWorkoutTriggerProps = {
     children: ReactNode
     width: 'full' | 'auto'
     workoutToEdit?: Tables<'Workout'>
 }
 
-function FormTriggerFlashcards({
+function FormWorkoutTrigger({
     children,
     width,
     workoutToEdit,
-}: FormTriggerFlashcardsProps) {
+}: FormWorkoutTriggerProps) {
     const close = useRef(null)
 
     return (
