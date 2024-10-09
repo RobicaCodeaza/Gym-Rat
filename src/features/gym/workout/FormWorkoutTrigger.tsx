@@ -60,4 +60,4 @@ function FormWorkoutTrigger({
     )
 }
 
-export default FormTriggerFlashcards
+export default FormWorkoutTrigger
