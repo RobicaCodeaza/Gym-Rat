@@ -47,7 +47,7 @@ function FormWorkoutTrigger({
                     </ButtonIcon>
                 </DrawerClose>
                 <DrawerHeader>
-                    <DrawerTitle className="mb-10 ml-auto mr-auto text-[2.4rem] font-medium text-dodger-blue-900">
+                    <DrawerTitle className="mb-10 ml-auto mr-auto text-[2.4rem] font-medium text-dodger-blue-700">
                         New Workout
                     </DrawerTitle>
                 </DrawerHeader>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useCreateWorkout } from './useCreateWorkout'
 import { useEditWorkout } from './useEditWorkout'
 
@@ -19,6 +19,8 @@ import { Input } from '@/components/aceternity/Input'
 
 import Spinner from '@/ui/Spinner'
 import Select from '../../../ui/Select'
+import { Form } from 'react-router-dom'
+import { Label } from '../../../components/aceternity/Label'
 
 type CreateWorkoutFormProps = {
     workoutToEdit?: Tables<'Workout'>
@@ -52,6 +54,11 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
             defaultValues: isEditingSession ? editValuesDefined : undefined,
         })
     const { errors } = formState
+
+    function handleAddExercise(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault()
+        setNumExercisesToBeAdded(numExercisesToBeAdded + 1)
+    }
 
     const onSubmit: SubmitHandler<FieldValuesCreateWorkoutForm> = (data) => {
         if (isEditingSession) {
@@ -92,7 +99,7 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
 
     return (
         <form
-            className={`border-mako-grey-100 flex w-[37.5rem] flex-col gap-4 overflow-hidden rounded-md border px-8 py-4 text-[1.4rem] phone:w-full phone:gap-10 phone:px-6 phone:py-4 tab-port:gap-12 tab-port:px-10 tab-port:py-6 tab-land:gap-14`}
+            className="flex max-h-screen w-[37.5rem] flex-col gap-4 overflow-hidden overflow-y-scroll rounded-md border border-cod-gray-400 px-8 py-4 text-[1.4rem] phone:w-full phone:gap-10 phone:px-6 phone:py-4 tab-port:gap-12 tab-port:px-10 tab-port:py-6 tab-land:gap-14"
             onSubmit={handleSubmit(onSubmit, onError)}
         >
             <FormRow label="Name" error={errors?.name?.message}>
@@ -118,93 +125,83 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
                 />
             </FormRow>
             <div>
-                <Button as={'button'} variation="simpleTertiary" size="small">
+                <Button
+                    as={'button'}
+                    variation="simpleTertiary"
+                    size="small"
+                    onClick={(e) => handleAddExercise(e)}
+                >
                     Add Exercise
                 </Button>
             </div>
 
             {Array.from({ length: numExercisesToBeAdded }, (_, index) => {
                 return (
-                    <FormRow
-                        label="Exercise"
-                        error={errors.exerciseId?.[index]?.message}
-                        key={index}
-                    >
-                        <Select
-                            key={index}
-                            id="exercises"
-                            currentValue={'1'}
-                            options={exercisesIdOptions}
-                            {...register(`exerciseId.${index}`, {
-                                required: 'Missing Exercise',
-                            })}
-                        />
-                    </FormRow>
-                )
-            })}
-            {Array.from({ length: numExercisesToBeAdded }, (_, index) => {
-                return (
-                    <FormRow
-                        label="Equipment"
-                        error={errors.equipmentId?.[index]?.message}
-                        key={index}
-                    >
-                        <Select
-                            key={index}
-                            id="equipment"
-                            currentValue={'1'}
-                            options={equipmentIdOptions}
-                            {...register(`equipmentId.${index}`, {
-                                required: 'Missing Equipment',
-                            })}
-                        />
-                    </FormRow>
-                )
-            })}
-            {Array.from({ length: numExercisesToBeAdded }, (_, index) => {
-                return (
-                    <FormRow
-                        label="sets"
-                        error={errors.sets?.[index]?.message}
-                        key={index}
-                    >
-                        <Input
-                            type="number"
-                            id="sets"
-                            placeholder="ex: 10"
-                            {...register(`sets.${index}`, {
-                                required: 'Missing Sets Number',
-                                min: {
-                                    value: 1,
-                                    message:
-                                        'Add 1 minimum set to the exercise',
-                                },
-                            })}
-                        ></Input>
-                    </FormRow>
-                )
-            })}
-            {Array.from({ length: numExercisesToBeAdded }, (_, index) => {
-                return (
-                    <FormRow
-                        label="Rest Time"
-                        error={errors.restTime?.[index]?.message}
-                        key={index}
-                    >
-                        <Input
-                            type="number"
-                            id="restTime"
-                            placeholder="ex: 10"
-                            {...register(`restTime.${index}`, {
-                                required: 'Missing Rest Time',
-                                min: {
-                                    value: 15,
-                                    message:
-                                        'Add a minimum 15 seconds rest time between sets. ',
-                                },
-                            })}
-                        ></Input>
-                    </FormRow>
+                    <>
+                        <div className="mt-8 flex flex-col gap-8 phone:mt-12 phone:flex-row phone:gap-16">
+                            <div className="flex gap-8">
+                                <span className="self-start rounded-full bg-cod-gray-700 p-4 text-sm text-cod-gray-400">
+                                    {index + 1}
+                                </span>
+                                <div className="flex flex-col items-center gap-4 phone:gap-6">
+                                    <Label htmlFor="exercises">Exercises</Label>
+                                    <Select
+                                        key={index}
+                                        id="exercises"
+                                        currentValue={'1'}
+                                        options={exercisesIdOptions}
+                                        {...register(`exerciseId.${index}`, {
+                                            required: 'Missing Exercise',
+                                        })}
+                                    />
+                                </div>
+                            </div>
+                            <div className="flex flex-col items-center gap-4 phone:gap-6">
+                                <Label htmlFor="equipment">Equipment</Label>
+                                <Select
+                                    key={index}
+                                    id="equipment"
+                                    currentValue={'1'}
+                                    options={equipmentIdOptions}
+                                    {...register(`equipmentId.${index}`, {
+                                        required: 'Missing Equipment',
+                                    })}
+                                />
+                            </div>
+                            <div className="flex flex-col items-center gap-4 phone:gap-6">
+                                <Label htmlFor="sets">Sets</Label>
+                                <Input
+                                    type="number"
+                                    id="sets"
+                                    placeholder="ex: 10"
+                                    {...register(`sets.${index}`, {
+                                        required: 'Missing Sets Number',
+                                        min: {
+                                            value: 1,
+                                            message:
+                                                'Add 1 minimum set to the exercise',
+                                        },
+                                    })}
+                                ></Input>
+                            </div>
+                            <div className="flex flex-col items-center gap-4 phone:gap-6">
+                                <Label htmlFor="restTime">Rest Time</Label>
+                                <Input
+                                    type="number"
+                                    id="restTime"
+                                    placeholder="ex: 10"
+                                    {...register(`restTime.${index}`, {
+                                        required: 'Missing Rest Time',
+                                        min: {
+                                            value: 15,
+                                            message:
+                                                'Add a minimum 15 seconds rest time between sets. ',
+                                        },
+                                    })}
+                                ></Input>
+                            </div>
+                        </div>
+                    </>
                 )
             })}
 
