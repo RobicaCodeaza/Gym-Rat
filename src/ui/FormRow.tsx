@@ -35,7 +35,12 @@ function FormRow({ children, label, error, className }: FormRowProps) {
                 ) {
                     return (
                         <>
-                            {label && <Label htmlFor={child.props.id}></Label>}
+                            {label && (
+                                <Label
+                                    htmlFor={child.props.id}
+                                    className="text-cod-gray-100"
+                                ></Label>
+                            )}
                             {child}
                             {error && (
                                 <span className="flex text-center text-danger-500 phone:text-left">
