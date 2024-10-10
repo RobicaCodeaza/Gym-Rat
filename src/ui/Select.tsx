@@ -23,7 +23,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
 
     return (
         <select
-            className="shadow-cod-gray/15 w-[18.5rem] rounded-lg border border-cod-gray-900 bg-cod-gray-950 px-2 py-2 text-[1.4rem] font-medium shadow-sm phone:px-3 phone:py-2 tab-land:w-auto"
+            className="shadow-cod-gray/15 block w-[18.5rem] rounded-lg border border-cod-gray-900 bg-cod-gray-950 px-4 py-2 text-[1.4rem] font-medium shadow-sm phone:px-4 phone:py-2 tab-land:w-auto"
             ref={ref}
             value={currentSelectValue}
             {...otherProps}
