@@ -1,8 +1,4 @@
-import React, {
-    ComponentPropsWithoutRef,
-    ReactNode,
-    type ReactElement,
-} from 'react'
+import React, { ComponentPropsWithoutRef, type ReactElement } from 'react'
 import { Label } from '../components/aceternity/Label'
 import { cn } from '../lib/utils'
 
@@ -38,8 +34,10 @@ function FormRow({ children, label, error, className }: FormRowProps) {
                             {label && (
                                 <Label
                                     htmlFor={child.props.id}
-                                    className="text-cod-gray-100"
-                                ></Label>
+                                    className="text-cod-gray-200"
+                                >
+                                    {label}
+                                </Label>
                             )}
                             {child}
                             {error && (

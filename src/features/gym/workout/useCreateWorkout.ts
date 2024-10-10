@@ -7,7 +7,7 @@ export function useCreateWorkout() {
     const queryClient = useQueryClient()
 
     const { isPending: isCreating, mutate: createWorkout } = useMutation({
-        mutationFn: (data: Tables<'Workout'>) =>
+        mutationFn: (data: Omit<Tables<'Workout'>, 'id'>) =>
             createEditWorkoutApi(data, null),
         onSuccess: async () => {
             toast.success('Workout successfully created.')

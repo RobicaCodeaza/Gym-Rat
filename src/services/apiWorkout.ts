@@ -1,9 +1,9 @@
 import supabase from '@/services/supabase'
-import { Tables } from '@/types/database.types'
+import { type Tables } from '@/types/database.types'
 import { getCurrentUser } from './apiAuth'
 
 export async function createEditWorkout(
-    newWorkout: Tables<'Workout'>,
+    newWorkout: Omit<Tables<'Workout'>, 'id'>,
     id: number | null
 ) {
     const user = await getCurrentUser()
