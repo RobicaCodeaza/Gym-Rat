@@ -113,7 +113,7 @@ export default {
                 fifth: 'moveInCircle 20s ease infinite',
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
-                afterEffect: 'after 1s ease-out',
+                afterEffect: 'after 0.5s ease-in-out',
             },
             colors: {
                 'cod-gray': {
