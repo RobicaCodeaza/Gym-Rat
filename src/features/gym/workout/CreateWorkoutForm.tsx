@@ -125,7 +125,7 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
 
     return (
         <form
-            className="flex max-h-screen w-[37.5rem] flex-col gap-4 overflow-hidden overflow-y-scroll rounded-md border border-cod-gray-600 px-8 py-4 text-[1.4rem] phone:w-full phone:gap-10 phone:px-6 phone:py-4 tab-port:gap-12 tab-port:px-10 tab-port:py-6 tab-land:gap-14"
+            className="flex max-h-screen w-full flex-col gap-4 overflow-hidden overflow-y-scroll rounded-md border border-cod-gray-600 px-8 py-4 text-[1.4rem] phone:gap-10 phone:px-6 phone:py-4 tab-port:gap-12 tab-port:px-10 tab-port:py-6 tab-land:gap-14"
             onSubmit={handleSubmit(onSubmit, onError)}
         >
             <FormRow label="Name" error={errors?.name?.message}>
@@ -163,12 +163,13 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
             {Array.from({ length: numExercisesToBeAdded }, (_, index) => {
                 return (
                     <div
-                        className="flex animate-afterEffect flex-col items-start gap-8 rounded-lg bg-cod-gray-900 bg-gradient-to-r from-cod-gray-950 to-dodger-blue-950 px-8 py-6 phone:flex-row phone:justify-between phone:gap-0 phone:px-12 phone:py-8"
+                        className="flex animate-afterEffect flex-col gap-8 rounded-lg bg-cod-gray-900 bg-gradient-to-r from-cod-gray-950 to-dodger-blue-950 px-8 py-6 phone:justify-between phone:px-4 phone:py-8 tab-port:flex-row tab-port:items-start tab-port:gap-0 tab-port:px-8"
                         key={index}
                     >
                         <span className="self-center rounded-full bg-dodger-blue-950 p-4 text-sm text-cod-gray-200">
                             {index + 1}
                         </span>
+
                         <div className="flex flex-col items-center gap-4 phone:gap-6">
                             <Label htmlFor="exercises">Exercises</Label>
                             <Select
