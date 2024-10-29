@@ -94,8 +94,8 @@ function Button<C extends ElementType>({
                 accentTertiary:
                     'rounded-md bg-lima-500 hover:bg-lima-600 text-cod-gray-50 hover:text-cod-gray-50 active:bg-lima-700  active:text-cod-gray-100',
                 simplePrimary: `border bg-cod-gray-950 rounded-md border-dodger-blue-800 hover:border-dodger-blue-600 text-dodger-blue-700 hover:text-dodger-blue-500 active:border-dodger-blue-700  active:text-dodger-blue-600`,
-                simpleTertiary: `border bg-cod-gray-950 rounded-md border-lima-500 hover:border-lima-600 text-lima-500 hover:text-lima-600 active:border-lima-700  active:text-lima-700`,
-                simpleSecondary: `border bg-cod-gray-950 rounded-md border-starship-500 hover:border-starship-600 text-starship-500 hover:text-starship-600 active:border-starship-700  active:text-starship-700`,
+                simpleTertiary: `border bg-cod-gray-950 rounded-md border-lima-800 hover:border-lima-600 text-lima-700 hover:text-lima-500 active:border-lima-700  active:text-lima-600`,
+                simpleSecondary: `border bg-cod-gray-950 rounded-md border-starship-800 hover:border-starship-600 text-starship-700 hover:text-starship-500 active:border-starship-700  active:text-starship-600`,
                 subtleGrey:
                     'bg-cod-gray-100 rounded-md outline outline-offset-0 outline-none   text-cod-gray-500 hover:bg-cod-gray-50  hover:text-cod-gray-700 hover:outline-2 hover:outline-dodger-blue-400 focus:bg-cod-gray-50',
                 subtleWhite:
