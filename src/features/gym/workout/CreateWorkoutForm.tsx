@@ -125,7 +125,7 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
 
     return (
         <form
-            className="flex max-h-screen w-full flex-col gap-4 overflow-hidden overflow-y-scroll rounded-md border border-cod-gray-600 px-8 py-4 text-[1.4rem] phone:gap-10 phone:px-6 phone:py-4 tab-port:gap-12 tab-port:px-10 tab-port:py-6 tab-land:gap-14"
+            className="flex max-h-screen w-full flex-col gap-8 overflow-hidden overflow-y-scroll rounded-md border border-cod-gray-600 px-8 py-4 text-[1.4rem] phone:gap-10 phone:px-6 phone:py-4 tab-port:gap-12 tab-port:px-10 tab-port:py-6 tab-land:gap-14"
             onSubmit={handleSubmit(onSubmit, onError)}
         >
             <FormRow label="Name" error={errors?.name?.message}>
@@ -163,14 +163,14 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
             {Array.from({ length: numExercisesToBeAdded }, (_, index) => {
                 return (
                     <div
-                        className="flex animate-afterEffect flex-col gap-8 rounded-lg bg-cod-gray-900 bg-gradient-to-r from-cod-gray-950 to-dodger-blue-950 px-8 py-6 phone:justify-between phone:px-4 phone:py-8 tab-port:flex-row tab-port:items-start tab-port:gap-0 tab-port:px-8"
+                        className="relative flex animate-afterEffect flex-col gap-8 rounded-lg bg-cod-gray-900 bg-gradient-to-r from-cod-gray-950 to-dodger-blue-950 px-12 pb-6 pt-32 phone:items-center phone:justify-between phone:px-24 phone:py-8 tab-port:flex-row tab-port:items-start tab-port:gap-0 tab-port:px-8 tab-port:py-6"
                         key={index}
                     >
-                        <span className="self-center rounded-full bg-dodger-blue-950 p-4 text-sm text-cod-gray-200">
+                        <span className="absolute left-8 top-8 rounded bg-dodger-blue-950 p-4 text-sm text-cod-gray-200 tab-port:relative tab-port:inset-0 tab-port:self-center">
                             {index + 1}
                         </span>
 
-                        <div className="flex flex-col items-center gap-4 phone:gap-6">
+                        <div className="flex items-center justify-between gap-4 phone:w-2/3 phone:gap-6 tab-port:flex-col">
                             <Label htmlFor="exercises">Exercises</Label>
                             <Select
                                 key={index}
@@ -187,7 +187,7 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
                                 </p>
                             )}
                         </div>
-                        <div className="flex flex-col items-center gap-4 phone:gap-6">
+                        <div className="flex items-center justify-between gap-4 phone:w-2/3 phone:gap-6 tab-port:flex-col">
                             <Label htmlFor="equipment">Equipment</Label>
                             <Select
                                 key={index}
@@ -204,7 +204,7 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
                                 </p>
                             )}
                         </div>
-                        <div className="flex flex-col items-center gap-4 phone:gap-6">
+                        <div className="flex items-center justify-between gap-4 phone:w-2/3 phone:gap-6 tab-port:flex-col">
                             <Label htmlFor="sets">Sets</Label>
                             <Input
                                 type="number"
@@ -225,7 +225,7 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
                                 </p>
                             )}
                         </div>
-                        <div className="flex flex-col items-center gap-4 phone:gap-6">
+                        <div className="flex items-center justify-between gap-4 phone:w-2/3 phone:gap-6 tab-port:flex-col">
                             <Label htmlFor="restTime">Rest Time</Label>
                             <Input
                                 type="number"
@@ -246,7 +246,7 @@ function CreateWorkoutForm({ workoutToEdit }: CreateWorkoutFormProps) {
                                 </p>
                             )}
                         </div>
-                        <button className="self-center">
+                        <button className="absolute right-8 top-10 tab-port:relative tab-port:inset-0 tab-port:self-center">
                             <RiDeleteBin5Line className="h-9 w-9 text-danger-600 transition-all duration-300 hover:text-danger-500"></RiDeleteBin5Line>
                         </button>
                     </div>
