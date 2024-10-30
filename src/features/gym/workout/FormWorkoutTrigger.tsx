@@ -30,7 +30,7 @@ function FormWorkoutTrigger({
             <DrawerTrigger className={`w-${width}`}>
                 {cloneElement(children as ReactElement, {})}
             </DrawerTrigger>
-            <DrawerContent className="tab-land:px-30 mx-auto flex flex-col justify-items-center bg-cod-gray-950 px-16 py-5 phone:px-20 phone:py-16 tab-port:px-24 tab-port:py-12 tab-land:py-16 particular-small-laptop:w-2/3 particular-small-laptop:px-36 particular-small-laptop:py-20">
+            <DrawerContent className="mx-auto flex flex-col justify-items-center bg-cod-gray-950 px-12 py-5 phone:px-20 phone:py-16 tab-port:px-24 tab-port:py-12 tab-land:px-32 tab-land:py-16 particular-small-laptop:w-2/3 particular-small-laptop:px-36 particular-small-laptop:py-20">
                 <DrawerClose ref={close} className="absolute right-6 top-6">
                     <ButtonIcon as="div">
                         <svg
