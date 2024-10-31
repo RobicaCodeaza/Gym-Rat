@@ -3,23 +3,23 @@ import { Tables } from '@/types/database.types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import toast from 'react-hot-toast'
-export function useEditWorkout() {
+export function useCreateExercise() {
     const queryClient = useQueryClient()
 
-    const { isPending: isUpdating, mutate: updateWorkout } = useMutation({
-        mutationFn: ({ data, id }: { data: Tables<'Workout'>; id: number }) =>
-            createEditWorkoutApi(data, id),
+    const { isPending: isCreating, mutate: createExercise } = useMutation({
+        mutationFn: (data: Omit<Tables<'Workout'>, 'id'>) =>
+            createEditWorkoutApi(data, null),
         onSuccess: async () => {
-            toast.success('Workout successfully edited.')
+            toast.success('Workout successfully created.')
             await queryClient.invalidateQueries({
                 queryKey: ['workouts'],
             })
         },
         onError: (err: Error) =>
             toast.error(
-                `${err.message}. Check if there is any duplicate naming.`
+                `${err.message}.Check if there is any duplicate naming.`
             ),
     })
 
-    return { isUpdating, updateWorkout }
+    return { isCreating, createExercise }
 }
