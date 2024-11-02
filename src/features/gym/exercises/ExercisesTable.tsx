@@ -1,53 +1,8 @@
 import Menus from '../../../ui/Menus'
 import Table from '../../../ui/Table'
-import WorkoutRow, { Workout } from './ExerciseRow'
+import ExerciseRow from './ExerciseRow'
 
-const workouts: Workout[] = [
-    {
-        id: 1,
-        lastTimeWorked: '11/07/2024',
-        totalTime: '90',
-        type: 'chest',
-        name: 'Chest Workout',
-    },
-
-    {
-        id: 2,
-        lastTimeWorked: '11/07/2024',
-        totalTime: '90',
-        type: 'chest',
-        name: 'Chest Workout',
-    },
-    {
-        id: 3,
-        lastTimeWorked: '11/07/2024',
-        totalTime: '90',
-        type: 'chest',
-        name: 'Chest Workout',
-    },
-    {
-        id: 4,
-        lastTimeWorked: '11/07/2024',
-        totalTime: '90',
-        type: 'chest',
-        name: 'Chest Workout',
-    },
-    {
-        id: 5,
-
-        lastTimeWorked: '11/07/2024',
-        totalTime: '90',
-        type: 'chest',
-        name: 'Chest Workout',
-    },
-    {
-        id: 6,
-        lastTimeWorked: '11/07/2024',
-        totalTime: '90',
-        type: 'chest',
-        name: 'Chest Workout',
-    },
-]
+const exercises: Exercise[] = []
 
 function ExercisesTable() {
     return (
@@ -55,17 +10,17 @@ function ExercisesTable() {
             <Table columns="tableExercises">
                 <Table.Header>
                     <div>Name</div>
-                    <div>Last Worked Out</div>
-                    <div>Exercises</div>
-                    <div>Type</div>
-                    <div>Next Training</div>
+                    <div>Last Exercised</div>
+                    <div>Equipment</div>
+                    <div>PR</div>
+                    <div></div>
                     <div></div>
                 </Table.Header>
 
                 <Table.Body
-                    data={workouts}
-                    render={(workout) => (
-                        <WorkoutRow key={workout.id} workout={workout} />
+                    data={exercises}
+                    render={(exercise) => (
+                        <ExerciseRow key={exercise.id} exercise={exercise} />
                     )}
                 />
                 <Table.Footer>

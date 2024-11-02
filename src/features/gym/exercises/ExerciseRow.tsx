@@ -12,30 +12,43 @@ import Menus from '@/ui/Menus'
 // import Spinner from '../../ui/Spinner'
 import Modal from '@/ui/Modal'
 import ConfirmDelete from '@/ui/ConfirmDelete'
-import { useDeleteWorkout } from './useDeleteWorkout'
+import { useDeleteWorkout } from './useDeleteExercise'
 import FormWorkoutTrigger from './FormWorkoutTrigger'
+
+type TargetMuscles =
+    | 'back'
+    | 'traps'
+    | 'lats'
+    | 'upper back'
+    | 'middle back'
+    | 'lower back'
+    | 'chest'
+    | 'upper chest'
+    | 'lower chest'
+    | 'middle chest'
+    | 'delts'
+    | 'front delts'
+    | 'side delts'
+    | 'rear delts'
+    | 'calves'
+    | 'quads'
+    | 'hamstrings'
+    | 'glutes'
+    | 'adductors'
+    | 'abductors'
+    | 'forearms'
+    | 'biceps'
+    | 'triceps'
+    | 'longhead triceps'
+    | 'shorthead triceps'
+    | 'medial triceps'
+    | 'abs'
 
 export type Exercise = {
     id: number
-    lastTimeWorked: string
-    totalTime: string
-    type:
-        | 'push'
-        | 'pull'
-        | 'legs'
-        | 'biceps'
-        | 'triceps'
-        | 'chest'
-        | 'back'
-        | 'shoulders'
-        | 'abs'
-        | 'chest&back'
-        | 'chest&shoulders'
-        | 'chest&triceps'
-        | 'chest&biceps'
-        | 'back&biceps'
-        | 'back&triceps'
-        | 'shoulders&arms'
+    lastExercised: string
+    targetMuscles: TargetMuscles[]
+    pr: number
     name: string
 }
 type ExerciseRowProps = {
@@ -48,12 +61,12 @@ function ExerciseRow({ exercise }: ExerciseRowProps) {
     return (
         <Table.Row>
             <div className="relative text-base font-bold uppercase tracking-wider text-cod-gray-100 after:absolute after:-bottom-1 after:left-1/2 after:h-1 after:w-1/2 after:-translate-x-1/2 after:animate-afterEffect after:bg-starship-200 after:content-['']">
-                {workout.name}
+                {exercise.name}
             </div>
 
             <div className="flex flex-col gap-1">
                 <span className="tracking-wider text-cod-gray-300">
-                    {workout.lastTimeWorked}
+                    {exercise.lastExercised}
                 </span>
                 <span className="max-w-content flex items-center gap-1 self-center rounded-full bg-dodger-blue-200 px-4 py-1 text-sm text-cod-gray-600">
                     <svg
@@ -68,7 +81,7 @@ function ExerciseRow({ exercise }: ExerciseRowProps) {
                         <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z" />
                         <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z" />
                     </svg>
-                    {workout.totalTime} min
+                    {exercise.pr} min
                 </span>
             </div>
 
@@ -112,9 +125,9 @@ function ExerciseRow({ exercise }: ExerciseRowProps) {
                 </span> */}
             </div>
 
-            <Tag type={workout.type}>
+            <Tag type={exercise.targetMuscles}>
                 <CgGym className="h-8 w-8 text-starship-200"></CgGym>
-                <span> {workout.type}</span>
+                <span> {exercise.targetMuscles}</span>
             </Tag>
             {/* <div className="font-medium">{formatCurrency(totalPrice)}</div> */}
             <div className="max-w-full justify-self-center rounded-full bg-starship-200 px-4 py-1 tracking-wider text-cod-gray-600">
@@ -122,8 +135,8 @@ function ExerciseRow({ exercise }: ExerciseRowProps) {
             </div>
             <Modal>
                 <Menus.Menu>
-                    <Menus.Toggle id={workout.id}></Menus.Toggle>
-                    <Menus.List id={workout.id}>
+                    <Menus.Toggle id={exercise.id}></Menus.Toggle>
+                    <Menus.List id={exercise.id}>
                         <Menus.Button
                             icon={<HiEye></HiEye>}
                             // onClick={() => navigate(`/bookings/${bookingId}`)}
