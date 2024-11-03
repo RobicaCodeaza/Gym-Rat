@@ -9,6 +9,42 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      Exercises: {
+        Row: {
+          equipment: number[] | null
+          id: number
+          lastExercised: string[] | null
+          name: string
+          reps: number[] | null
+          sets: number[] | null
+          targetMuscles: string[] | null
+          usedInWorkouts: number[] | null
+          weight: number[] | null
+        }
+        Insert: {
+          equipment?: number[] | null
+          id?: number
+          lastExercised?: string[] | null
+          name: string
+          reps?: number[] | null
+          sets?: number[] | null
+          targetMuscles?: string[] | null
+          usedInWorkouts?: number[] | null
+          weight?: number[] | null
+        }
+        Update: {
+          equipment?: number[] | null
+          id?: number
+          lastExercised?: string[] | null
+          name?: string
+          reps?: number[] | null
+          sets?: number[] | null
+          targetMuscles?: string[] | null
+          usedInWorkouts?: number[] | null
+          weight?: number[] | null
+        }
+        Relationships: []
+      }
       Workout: {
         Row: {
           completionRate: number | null
@@ -53,7 +89,20 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      push_to_reps_by_user: {
+        Args: {
+          user_id: number
+          new_reps: number[]
+        }
+        Returns: undefined
+      }
+      push_to_weights_by_user: {
+        Args: {
+          user_id: number
+          new_weights: number[]
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
@@ -144,4 +193,19 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof PublicSchema["CompositeTypes"]
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
+    ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
